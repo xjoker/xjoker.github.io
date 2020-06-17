@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>NEST更新ES出现404的坑 - 菜鸡码农小丑</title>
+  <title>Img - 菜鸡码农小丑</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xJoker" /><meta name="description" content="今天在排查一个es无法更新的问题，环境是.NET的NEST。 具体故障表现为更新时报错为 404 找不到Document。 经过排查后发现，Index里" />
+<meta name="author" content="xJoker" /><meta name="description" content="" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
-<link rel="canonical" href="https://xjoker.us/post/nest%E6%9B%B4%E6%96%B0es%E5%87%BA%E7%8E%B0404%E7%9A%84%E5%9D%91/" />
+<link rel="canonical" href="https://xjoker.us/post/img/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="NEST更新ES出现404的坑" />
-<meta property="og:description" content="今天在排查一个es无法更新的问题，环境是.NET的NEST。 具体故障表现为更新时报错为 404 找不到Document。 经过排查后发现，Index里" />
+<meta property="og:title" content="Img" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xjoker.us/post/nest%E6%9B%B4%E6%96%B0es%E5%87%BA%E7%8E%B0404%E7%9A%84%E5%9D%91/" />
-<meta property="article:published_time" content="2020-06-16T21:17:30+08:00" />
-<meta property="article:modified_time" content="2020-06-16T21:17:30+08:00" />
-<meta itemprop="name" content="NEST更新ES出现404的坑">
-<meta itemprop="description" content="今天在排查一个es无法更新的问题，环境是.NET的NEST。 具体故障表现为更新时报错为 404 找不到Document。 经过排查后发现，Index里">
-<meta itemprop="datePublished" content="2020-06-16T21:17:30&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-16T21:17:30&#43;08:00" />
-<meta itemprop="wordCount" content="228">
+<meta property="og:url" content="https://xjoker.us/post/img/" />
+<meta property="article:published_time" content="2020-06-17T22:37:59+08:00" />
+<meta property="article:modified_time" content="2020-06-17T22:37:59+08:00" />
+<meta itemprop="name" content="Img">
+<meta itemprop="description" content="">
+<meta itemprop="datePublished" content="2020-06-17T22:37:59&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-17T22:37:59&#43;08:00" />
+<meta itemprop="wordCount" content="0">
 
 
 
-<meta itemprop="keywords" content="elasticsearch,c#," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="NEST更新ES出现404的坑"/>
-<meta name="twitter:description" content="今天在排查一个es无法更新的问题，环境是.NET的NEST。 具体故障表现为更新时报错为 404 找不到Document。 经过排查后发现，Index里"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Img"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -118,13 +118,11 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">NEST更新ES出现404的坑</h1>
+      <h1 class="post-title">Img</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-06-16 </span>
-        <div class="post-category">
-            <a href="/categories/c/"> C# </a>
-            </div>
+        <span class="post-time"> 2020-06-17 </span>
+        
         
       </div>
     </header>
@@ -136,41 +134,8 @@
   </div>
 </div>
     <div class="post-content">
-      <p>今天在排查一个es无法更新的问题，环境是.NET的NEST。<br>
-具体故障表现为更新时报错为 404 找不到Document。</p>
-<p>经过排查后发现，Index里的type有两种，名字只有大小写的区别，但是内部结构并不相同。<br>
-(并不知道谁干的🤦‍♂️)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Index_BlogInfo
-index_bloginfo
-</code></pre></td></tr></table>
-</div>
-</div><p>这两个名字一样后，导致使用Kibana查询时找不到对象</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">GET /index_blogerinfo_202006/index_bloginfo/222222
-</code></pre></td></tr></table>
-</div>
-</div><p>但是如果使用query则可以查询到<br>
-同时也导致了在代码里调用NEST库操作ES时无法找到对象，导致更新失败的问题。</p>
-<p>目前暂时可以通过指定 Routing 来进行更新或者获取。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">GET /index_blogerinfo_202006/index_bloginfo/222222?routing=user
-</code></pre></td></tr></table>
-</div>
-</div>
+      <p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200617223820.png" alt="有个图片"></p>
+
     </div>
 
     <div class="post-copyright">
@@ -181,7 +146,7 @@ index_bloginfo
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-06-16
+        2020-06-17
         
     </span>
   </p>
@@ -189,17 +154,14 @@ index_bloginfo
   
 </div>
 <footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/elasticsearch/">elasticsearch</a>
-          <a href="/tags/c/">c#</a>
-          </div>
+      
       <nav class="post-nav">
-        <a class="prev" href="/post/img/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Img</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
+        <a class="next" href="/post/nest%E6%9B%B4%E6%96%B0es%E5%87%BA%E7%8E%B0404%E7%9A%84%E5%9D%91/">
+            <span class="next-text nav-default">NEST更新ES出现404的坑</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>
