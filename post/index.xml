@@ -6,19 +6,10 @@
     <description>Recent content in Posts on 菜鸡码农小丑</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jun 2020 22:37:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 21:17:30 +0800</lastBuildDate>
     
 	<atom:link href="https://xjoker.us/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Img</title>
-      <link>https://xjoker.us/post/img/</link>
-      <pubDate>Wed, 17 Jun 2020 22:37:59 +0800</pubDate>
-      
-      <guid>https://xjoker.us/post/img/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>NEST更新ES出现404的坑</title>
