@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fork on 菜鸡码农小丑</title>
+    <link>https://xjoker.us/tags/fork/</link>
+    <description>Recent content in Fork on 菜鸡码农小丑</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>xJoker - 菜鸡码农小丑</copyright>
+    <lastBuildDate>Fri, 19 Jun 2020 21:50:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://xjoker.us/tags/fork/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fork(Windows)逆向激活</title>
+      <link>https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/</link>
+      <pubDate>Fri, 19 Jun 2020 21:50:02 +0800</pubDate>
+      
+      <guid>https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/</guid>
+      <description>碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体</description>
+    </item>
+    
+  </channel>
+</rss>
