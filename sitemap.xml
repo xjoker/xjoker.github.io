@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/</loc>
+    <lastmod>2020-06-19T21:50:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/post/</loc>
+    <lastmod>2020-06-19T21:50:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/</loc>
+    <lastmod>2020-06-19T21:50:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xjoker.us/categories/c#/</loc>
     <lastmod>2020-06-16T21:17:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -37,21 +58,7 @@
   </url>
   
   <url>
-    <loc>https://xjoker.us/post/</loc>
-    <lastmod>2020-06-16T21:17:30+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xjoker.us/tags/</loc>
-    <lastmod>2020-06-16T21:17:30+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xjoker.us/</loc>
     <lastmod>2020-06-16T21:17:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
