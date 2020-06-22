@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构">
 <meta itemprop="datePublished" content="2020-06-22T22:09:28&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-22T22:09:28&#43;08:00" />
-<meta itemprop="wordCount" content="1147">
+<meta itemprop="wordCount" content="1112">
 
 
 
@@ -125,7 +125,7 @@
         <div class="post-category">
             <a href="/categories/c/"> C# </a>
             </div>
-          <span class="more-meta"> 约 1147 字 </span>
+          <span class="more-meta"> 约 1112 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -398,13 +398,12 @@ OnAttemptsExceeded 当失败后的操作，是归类到删除还是失败</p>
 <p>同时在控制台中，也可很清晰的看见异常的信息<br>
 <img src="http://cdn.aliyun.fzyyxx.com/Img/20200622214014.png" alt=""></p>
 <h2 id="queue设定">Queue设定</h2>
-<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200622214857.png" alt="">
-Queue的命名规则：小写字母，数字，下划线和破折号<br>
-当配置Queue名称后，UseHangfireServer 中也需要传入名称才能使用。<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200622214927.png" alt=""></p>
+<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200622214857.png" alt=""></p>
+<p>Queue的命名规则：小写字母，数字，下划线和破折号<br>
+当配置Queue名称后，UseHangfireServer 中也需要传入名称才能使用。</p>
+<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200622214927.png" alt=""></p>
 <h2 id="其他">其他</h2>
 <h3 id="并发限制">并发限制</h3>
-<p>通过设置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -413,9 +412,7 @@ Queue的命名规则：小写字母，数字，下划线和破折号<br>
 <pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[DisableConcurrentExecution(秒数)]</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>来设置并发的限制</p>
-<h3 id="任务名称">任务名称</h3>
-<p>通过设置</p>
+</div><h3 id="任务名称">任务名称</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -424,8 +421,7 @@ Queue的命名规则：小写字母，数字，下划线和破折号<br>
 <pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[JobDisplayName(&#34;名字&#34;)]</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>来设置方法的名称，名称是显示在详细里。<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200622220113.png" alt=""></p>
+</div><p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200622220113.png" alt=""></p>
 
     </div>
 
