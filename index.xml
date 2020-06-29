@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>xJoker - 菜鸡码农小丑</copyright>
-    <lastBuildDate>Mon, 29 Jun 2020 21:32:19 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 21:46:08 +0800</lastBuildDate>
     
 	<atom:link href="https://xjoker.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RemoteDesktopManager去除网络验证</title>
+      <link>https://xjoker.us/post/remotedesktopmanager%E5%8E%BB%E9%99%A4%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81/</link>
+      <pubDate>Mon, 29 Jun 2020 21:46:08 +0800</pubDate>
+      
+      <guid>https://xjoker.us/post/remotedesktopmanager%E5%8E%BB%E9%99%A4%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81/</guid>
+      <description>碎碎念 Remote Desktop Manager 是Windows和MAC平台下的一个多功能远程工具，可以同时远程Linux和Windows，而且拥有很多更加强大的功能。 目前网上</description>
+    </item>
     
     <item>
       <title>移动WSL到别的路径</title>
