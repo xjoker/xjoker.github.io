@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>xJoker - 菜鸡码农小丑</copyright>
-    <lastBuildDate>Tue, 23 Jun 2020 21:51:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 21:32:19 +0800</lastBuildDate>
     
 	<atom:link href="https://xjoker.us/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WSL2</title>
+      <link>https://xjoker.us/tags/wsl2/</link>
+      <pubDate>Mon, 29 Jun 2020 21:32:19 +0800</pubDate>
+      
+      <guid>https://xjoker.us/tags/wsl2/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hangfire</title>
