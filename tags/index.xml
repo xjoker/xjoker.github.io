@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>xJoker - 菜鸡码农小丑</copyright>
-    <lastBuildDate>Mon, 29 Jun 2020 21:32:19 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 22:41:08 +0800</lastBuildDate>
     
 	<atom:link href="https://xjoker.us/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RemoteDesktopManager</title>
+      <link>https://xjoker.us/tags/remotedesktopmanager/</link>
+      <pubDate>Mon, 29 Jun 2020 22:41:08 +0800</pubDate>
+      
+      <guid>https://xjoker.us/tags/remotedesktopmanager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>逆向研究</title>
+      <link>https://xjoker.us/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</link>
+      <pubDate>Mon, 29 Jun 2020 22:41:08 +0800</pubDate>
+      
+      <guid>https://xjoker.us/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>WSL2</title>
@@ -45,15 +63,6 @@
       <pubDate>Fri, 19 Jun 2020 21:50:02 +0800</pubDate>
       
       <guid>https://xjoker.us/tags/fork/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>逆向研究</title>
-      <link>https://xjoker.us/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</link>
-      <pubDate>Fri, 19 Jun 2020 21:50:02 +0800</pubDate>
-      
-      <guid>https://xjoker.us/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</guid>
       <description></description>
     </item>
     
