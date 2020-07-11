@@ -49,7 +49,7 @@
 <meta itemprop="description" content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C&#43;&#43; 的桌面开发&rdquo; C&#43;&#43; v14.25 ATL for v142 生成工具(x86 和 x64) C&#43;&#43; v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本">
 <meta itemprop="datePublished" content="2020-07-11T07:13:24&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-11T07:13:24&#43;08:00" />
-<meta itemprop="wordCount" content="727">
+<meta itemprop="wordCount" content="741">
 
 
 
@@ -125,7 +125,7 @@
         <div class="post-category">
             <a href="/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/"> 逆向研究 </a>
             </div>
-          <span class="more-meta"> 约 727 字 </span>
+          <span class="more-meta"> 约 741 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -177,7 +177,16 @@
 <p>因为工具包本身携带了python，为了避免系统的python影响导致失败。<br>
 在系统环境变量中配置工具包的路径，务必保证在最前面。</p>
 <p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200711072103.png" alt=""></p>
-<h3 id="获取源码">获取源码</h3>
+<p>另外需要添加一个系统变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">DEPOT_TOOLS_WIN_TOOLCHAIN=0
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="获取源码">获取源码</h3>
 <p>进入目录后使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
