@@ -3,14 +3,56 @@
   
   <url>
     <loc>https://xjoker.us/categories/</loc>
-    <lastmod>2020-06-29T22:41:08+08:00</lastmod>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/tags/chromedriver/</loc>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xjoker.us/post/</loc>
-    <lastmod>2020-06-29T22:41:08+08:00</lastmod>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/tags/</loc>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/</loc>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/</loc>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</loc>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xjoker.us/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</loc>
+    <lastmod>2020-07-11T07:13:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,34 +66,6 @@
   
   <url>
     <loc>https://xjoker.us/post/remotedesktopmanager%E5%8E%BB%E9%99%A4%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81/</loc>
-    <lastmod>2020-06-29T22:41:08+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xjoker.us/tags/</loc>
-    <lastmod>2020-06-29T22:41:08+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xjoker.us/</loc>
-    <lastmod>2020-06-29T22:41:08+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xjoker.us/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</loc>
-    <lastmod>2020-06-29T22:41:08+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xjoker.us/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/</loc>
     <lastmod>2020-06-29T22:41:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

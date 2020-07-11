@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>xJoker - 菜鸡码农小丑</copyright>
-    <lastBuildDate>Mon, 29 Jun 2020 22:41:08 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 07:13:24 +0800</lastBuildDate>
     
 	<atom:link href="https://xjoker.us/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Windows编译ChromeDriver</title>
+      <link>https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/</link>
+      <pubDate>Sat, 11 Jul 2020 07:13:24 +0800</pubDate>
+      
+      <guid>https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/</guid>
+      <description>环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &amp;ldquo;使用 C++ 的桌面开发&amp;rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本</description>
+    </item>
     
     <item>
       <title>RemoteDesktopManager去除网络验证</title>
