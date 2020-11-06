@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>xJoker - 菜鸡码农小丑</copyright>
-    <lastBuildDate>Sat, 11 Jul 2020 07:13:24 +0800</lastBuildDate>
-    
-	<atom:link href="https://xjoker.us/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 11 Jul 2020 07:13:24 +0800</lastBuildDate><atom:link href="https://xjoker.us/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows编译ChromeDriver</title>
       <link>https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/</link>
