@@ -1,0 +1,253 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Cygwin编译Windows HAProxy - 菜鸡码农小丑</title>
+<meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="xJoker"><meta name=description content="伸手区 这里有我已经编译完成的，可以直接下载使用 https://github.com/xjoker/HAProxyForWindows 环境准备 编译版本选择是目前最新的 2.4.7 下载源码 https://www.haproxy.org/download/2.4/src/haproxy-2.4.7.tar.gz 安装 Cygwin 其中 Cygwin 需要安装下列 Package 版本可以自己选择，我列">
+<meta name=generator content="Hugo 0.88.1 with theme even">
+<link rel=canonical href=https://xjoker.us/post/cygwin%E7%BC%96%E8%AF%91windows-haproxy/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<meta property="og:title" content="Cygwin编译Windows HAProxy">
+<meta property="og:description" content="伸手区 这里有我已经编译完成的，可以直接下载使用 https://github.com/xjoker/HAProxyForWindows 环境准备 编译版本选择是目前最新的 2.4.7 下载源码 https://www.haproxy.org/download/2.4/src/haproxy-2.4.7.tar.gz 安装 Cygwin 其中 Cygwin 需要安装下列 Package 版本可以自己选择，我列">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://xjoker.us/post/cygwin%E7%BC%96%E8%AF%91windows-haproxy/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-10-12T17:22:19+08:00">
+<meta property="article:modified_time" content="2021-10-12T17:22:19+08:00">
+<meta itemprop=name content="Cygwin编译Windows HAProxy">
+<meta itemprop=description content="伸手区 这里有我已经编译完成的，可以直接下载使用 https://github.com/xjoker/HAProxyForWindows 环境准备 编译版本选择是目前最新的 2.4.7 下载源码 https://www.haproxy.org/download/2.4/src/haproxy-2.4.7.tar.gz 安装 Cygwin 其中 Cygwin 需要安装下列 Package 版本可以自己选择，我列"><meta itemprop=datePublished content="2021-10-12T17:22:19+08:00">
+<meta itemprop=dateModified content="2021-10-12T17:22:19+08:00">
+<meta itemprop=wordCount content="353">
+<meta itemprop=keywords content="HAProxy,Cygwin,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Cygwin编译Windows HAProxy">
+<meta name=twitter:description content="伸手区 这里有我已经编译完成的，可以直接下载使用 https://github.com/xjoker/HAProxyForWindows 环境准备 编译版本选择是目前最新的 2.4.7 下载源码 https://www.haproxy.org/download/2.4/src/haproxy-2.4.7.tar.gz 安装 Cygwin 其中 Cygwin 需要安装下列 Package 版本可以自己选择，我列"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>菜鸡码农小丑</a>
+</div>
+<div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>Home</li>
+</a><a href=/post/>
+<li class=mobile-menu-item>Archives</li>
+</a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li>
+</a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li>
+</a>
+</ul>
+</nav>
+<div class=container id=mobile-panel>
+<header id=header class=header>
+<div class=logo-wrapper>
+<a href=/ class=logo>菜鸡码农小丑</a>
+</div>
+<nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>Home</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>Archives</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>Tags</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>Categories</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>Cygwin编译Windows HAProxy</h1>
+<div class=post-meta>
+<span class=post-time> 2021-10-12 </span>
+<div class=post-category>
+<a href=/categories/windows/> Windows </a>
+</div>
+<span class=more-meta> 约 353 字 </span>
+<span class=more-meta> 预计阅读 1 分钟 </span>
+<span id=busuanzi_container_page_pv class=more-meta> <span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读 </span>
+</div>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#伸手区>伸手区</a></li>
+<li><a href=#环境准备>环境准备</a></li>
+<li><a href=#开始编译>开始编译</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class=post-content>
+<h2 id=伸手区>伸手区</h2>
+<hr>
+<p>这里有我已经编译完成的，可以直接下载使用<br>
+<a href=https://github.com/xjoker/HAProxyForWindows>https://github.com/xjoker/HAProxyForWindows</a></p>
+<h2 id=环境准备>环境准备</h2>
+<hr>
+<p>编译版本选择是目前最新的 2.4.7</p>
+<ol>
+<li>下载源码 <a href=https://www.haproxy.org/download/2.4/src/haproxy-2.4.7.tar.gz>https://www.haproxy.org/download/2.4/src/haproxy-2.4.7.tar.gz</a></li>
+<li>安装 Cygwin</li>
+</ol>
+<p>其中 Cygwin 需要安装下列 Package<br>
+版本可以自己选择，我列出我选择的版本号</p>
+<ul>
+<li>cmake (3.20.0-1)</li>
+<li>gcc-core (11.2.0-1)</li>
+<li>cygwin32-gcc-core (6.4.0-1)</li>
+<li>make (4.3-1)</li>
+<li>mingw64-x86_64-pcre2 (10.38-1)</li>
+<li>mingw64-i686-pcre2 (10.38-1)</li>
+<li>libpcre2-devel (10.38-1)</li>
+<li>pcre2 (10.38-1)</li>
+<li>libssl-devel (1.1.1f-1)</li>
+</ul>
+<h2 id=开始编译>开始编译</h2>
+<hr>
+<p>编译可用的参数可参考 <a href=https://github.com/haproxy/haproxy/blob/master/Makefile>https://github.com/haproxy/haproxy/blob/master/Makefile</a><br>
+或者在目录下的 Makefile 的注释内也可看</p>
+<p>我这里使用的参数如下</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>make <span class=nv>TARGET</span><span class=o>=</span>cygwin <span class=nv>USE_PCRE2_JIT</span><span class=o>=</span><span class=m>1</span> <span class=nv>USE_THREAD</span><span class=o>=</span><span class=m>1</span> <span class=nv>USE_CRYPT_H</span><span class=o>=</span><span class=m>1</span> <span class=nv>USE_OPENSSL</span><span class=o>=</span><span class=m>1</span> <span class=nv>USE_SLZ</span><span class=o>=</span><span class=m>1</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>USE_PCRE2_JIT : enable JIT for faster regex on libpcre2</li>
+<li>USE_THREAD : enable threads support.</li>
+<li>USE_CRYPT_H : set it if your system requires including crypt.h</li>
+<li>USE_OPENSSL : enable use of OpenSSL. Recommended, but see below.</li>
+<li>USE_SLZ : enable slz library instead of zlib (default=enabled)</li>
+</ul>
+<p>需要注意，很多可选参数在 Windows 平台上并不能使用。</p>
+<p>编译过程一般需要 3~5 分钟，看编译机器的性能<br>
+另外如果过程中出现异常提示缺少什么库的话，就回到 Cygwin 中安装</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012171321.png alt></p>
+<p>完成后在目录下会有 <code>haproxy.exe</code></p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012171425.png alt></p>
+<p>将这个文件复制到单独目录里<br>
+这时候直接执行会提示缺少很多 dll<br>
+这里列举下可能需要的 dll 名称，具体 dll 可从 cygwin 目录内找到</p>
+<ul>
+<li>cygcrypto-1.1.dll</li>
+<li>cygpcre2-8-0.dll</li>
+<li>cygwin1.dll</li>
+<li>cyggcc_s-seh-1.dll</li>
+<li>cygssl-1.1.dll</li>
+<li>cygz.dll</li>
+</ul>
+<p>如果还有缺失的可根据名称去目录拷贝出来</p>
+<p>执行查看下</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>haproxy -vv
+</code></pre></td></tr></table>
+</div>
+</div><p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012172103.png alt></p>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>xJoker</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2021-10-12
+</span>
+</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/haproxy/>HAProxy</a>
+<a href=/tags/cygwin/>Cygwin</a>
+</div>
+<nav class=post-nav>
+<a class=next href=/post/%E5%BE%AE%E5%8D%9Aapp%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/>
+<span class="next-text nav-default">微博APP模拟登录</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i>
+</a>
+</nav>
+</footer>
+</article>
+</div>
+<script src=https://utteranc.es/client.js repo=xjoker/xjoker.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script>
+<noscript>Please enable JavaScript to view the <a href=https://github.com/utterance>comments powered by utterances.</a></noscript>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=social-links>
+<a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div>
+<div class=copyright>
+<span class=power-by>
+由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<div class=busuanzi-footer>
+<span id=busuanzi_container_site_pv> 本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次 </span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv> 本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人 </span>
+</div>
+<span class=copyright-year>
+&copy;
+2019 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span>
+</span>
+</div>
+</footer>
+<div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
+<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
+<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+</body>
+</html>
