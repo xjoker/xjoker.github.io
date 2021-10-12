@@ -1,332 +1,257 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!doctype html><html lang=zh-cn>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Fork(Windows)逆向激活 - 菜鸡码农小丑</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="xJoker" /><meta name="description" content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
-
-
-<link rel="canonical" href="https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<link href="/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="Fork(Windows)逆向激活" />
-<meta property="og:description" content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-06-19T21:50:02&#43;08:00" />
-<meta property="article:modified_time" content="2020-06-19T21:50:02&#43;08:00" />
-
-<meta itemprop="name" content="Fork(Windows)逆向激活">
-<meta itemprop="description" content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体"><meta itemprop="datePublished" content="2020-06-19T21:50:02&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-19T21:50:02&#43;08:00" />
-<meta itemprop="wordCount" content="695">
-<meta itemprop="keywords" content="Fork,逆向研究," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Fork(Windows)逆向激活"/>
-<meta name="twitter:description" content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体"/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Fork(Windows)逆向激活 - 菜鸡码农小丑</title>
+<meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="xJoker"><meta name=description content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体">
+<meta name=generator content="Hugo 0.88.1 with theme even">
+<link rel=canonical href=https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<meta property="og:title" content="Fork(Windows)逆向激活">
+<meta property="og:description" content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://xjoker.us/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2020-06-19T21:50:02+08:00">
+<meta property="article:modified_time" content="2020-06-19T21:50:02+08:00">
+<meta itemprop=name content="Fork(Windows)逆向激活">
+<meta itemprop=description content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体"><meta itemprop=datePublished content="2020-06-19T21:50:02+08:00">
+<meta itemprop=dateModified content="2020-06-19T21:50:02+08:00">
+<meta itemprop=wordCount content="695">
+<meta itemprop=keywords content="Fork,逆向研究,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Fork(Windows)逆向激活">
+<meta name=twitter:description content="碎碎念 Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。 不过后续软件开始收费了，这么好的软件的确是要盈利。 所以我决定白嫖一下，具体"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">菜鸡码农小丑</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>菜鸡码农小丑</a>
 </div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-
-  
-
-
+<div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>Home</li>
+</a><a href=/post/>
+<li class=mobile-menu-item>Archives</li>
+</a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li>
+</a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li>
+</a>
+</ul>
 </nav>
-
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">菜鸡码农小丑</a>
+<div class=container id=mobile-panel>
+<header id=header class=header>
+<div class=logo-wrapper>
+<a href=/ class=logo>菜鸡码农小丑</a>
 </div>
-
-
-
-
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
+<nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>Home</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>Archives</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>Tags</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>Categories</a>
+</li>
+</ul>
 </nav>
-
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">Fork(Windows)逆向激活</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2020-06-19 </span>
-        <div class="post-category">
-            <a href="/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/"> 逆向研究 </a>
-            </div>
-          <span class="more-meta"> 约 695 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
-  </div>
+</header>
+<main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>Fork(Windows)逆向激活</h1>
+<div class=post-meta>
+<span class=post-time> 2020-06-19 </span>
+<div class=post-category>
+<a href=/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/> 逆向研究 </a>
 </div>
-  <div class="post-outdated">
-    <div class="warn">
-      <p>【注意】最后更新于 <span class="timeago" datetime="2020-06-19T21:50:02" title="June 19, 2020">June 19, 2020</span>，文中内容可能已过时，请谨慎使用。</p>
-    </div>
-  </div>
-    <div class="post-content">
-      <h1 id="碎碎念">碎碎念</h1>
+<span class=more-meta> 约 695 字 </span>
+<span class=more-meta> 预计阅读 2 分钟 </span>
+<span id=busuanzi_container_page_pv class=more-meta> <span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读 </span>
+</div>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents></nav>
+</div>
+</div>
+<div class=post-outdated>
+<div class=warn>
+<p>【注意】最后更新于 <span class=timeago datetime=2020-06-19T21:50:02 title="June 19, 2020">June 19, 2020</span>，文中内容可能已过时，请谨慎使用。</p>
+</div>
+</div>
+<div class=post-content>
+<h1 id=碎碎念>碎碎念</h1>
 <p>Windows 平台上的Git软件很多,但是自从用过了Fork后无法自拔。<br>
 不过后续软件开始收费了，这么好的软件的确是要盈利。</p>
 <p>所以我决定白嫖一下，具体关键点不会透露太多，存粹作为研究。</p>
-<h1 id="项目分析">项目分析</h1>
+<h1 id=项目分析>项目分析</h1>
 <p>dnSpy打开后可以看见这个程序是使用 .Net 开发的，版本是 .NET Framework 4.6.2<br>
 主要代码经过了混淆加密
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200618154559.png" alt=""></p>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200618154559.png alt></p>
 <p>可以看见混淆工具是 ConfuserEx<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200618154651.png" alt=""></p>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200618154651.png alt></p>
 <p>ConfuserEx 是一个开源的 .Net 代码混淆器，找到对应的解包工具先将他去混淆。<br>
 解包后顺着错误提示找到代码</p>
-<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200618160235.png" alt=""></p>
+<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200618160235.png alt></p>
 <p>目前可以看见是调用了激活方法，根据方法的结果来决定授权是否正常。<br>
 先跟进 ActivateWithEmail 看看。</p>
-<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200619205123.png" alt=""></p>
+<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200619205123.png alt></p>
 <p>代码里可以直接看见请求的几个要素，将这几个要素提交到 Paddle 平台进行授权验证。</p>
 <p>向下可见程序并非是全程联网进行授权验证。不过之前也猜测如果离线用户怎么使用这玩意，应该是有离线存储授权的功能在。<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200619205239.png" alt=""></p>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200619205239.png alt></p>
 <p>跟进存储授权的代码后可以看见授权文件是使用 AES-CBC 加密，存储成两个文件。<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200619205920.png" alt=""></p>
-<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200619205855.png" alt=""></p>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200619205920.png alt></p>
+<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200619205855.png alt></p>
 <p>查看下文件的内容格式</p>
-<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200619210323.png" alt=""></p>
+<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200619210323.png alt></p>
 <p>文件目前是将LicenseData加密后存储为JSON。
-根据之前代码，授权文件的加密密钥是 $&quot;{Base64(ProductId)}.spadl&quot;</p>
+根据之前代码，授权文件的加密密钥是 $"{Base64(ProductId)}.spadl"</p>
 <p>跟着调用链找到 ProductId<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200619211809.png" alt=""></p>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200619211809.png alt></p>
 <p>顺藤摸瓜找到授权文件存储位置后打开文件。<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200619212641.png" alt=""></p>
-<h1 id="构建假冒激活文件">构建假冒激活文件</h1>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200619212641.png alt></p>
+<h1 id=构建假冒激活文件>构建假冒激活文件</h1>
 <p>了解了结构后，其实只要构造出 license_data 的数据即可激活</p>
 <p>查看代码可见加密前的内容结构<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200619213356.png" alt=""></p>
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200619213356.png alt></p>
 <p>如果是存在本地授权文件，应该是会在程序启动时去读取授权文件。<br>
 那只要构建假冒的文件即可完美激活。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">newSpadl</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LicenseModel</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">ActivationDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">,</span>
-    <span class="n">ActivationEmail</span> <span class="p">=</span> <span class="s">$&#34;your@email.com&#34;</span><span class="p">,</span>
-    <span class="n">ActivationId</span> <span class="p">=</span> <span class="n">licenseCode</span><span class="p">,</span>
-    <span class="n">LicenseCode</span> <span class="p">=</span> <span class="n">licenseCode</span><span class="p">,</span>
-    <span class="n">LicenseCodeHash</span> <span class="p">=</span> <span class="n">HashLicense</span><span class="p">(</span><span class="n">licenseCode</span><span class="p">),</span>
-    <span class="n">LicenseExpiryDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">AddYears</span><span class="p">(</span><span class="m">5</span><span class="p">),</span>
-    <span class="n">ProductId</span> <span class="p">=</span> <span class="n">xxxxx</span><span class="p">,</span>
-    <span class="n">LicenseUuid</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">()</span>
-<span class="p">};</span>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=kt>var</span> <span class=n>newSpadl</span> <span class=p>=</span> <span class=k>new</span> <span class=n>LicenseModel</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>ActivationDate</span> <span class=p>=</span> <span class=n>DateTime</span><span class=p>.</span><span class=n>Now</span><span class=p>,</span>
+    <span class=n>ActivationEmail</span> <span class=p>=</span> <span class=s>$&#34;your@email.com&#34;</span><span class=p>,</span>
+    <span class=n>ActivationId</span> <span class=p>=</span> <span class=n>licenseCode</span><span class=p>,</span>
+    <span class=n>LicenseCode</span> <span class=p>=</span> <span class=n>licenseCode</span><span class=p>,</span>
+    <span class=n>LicenseCodeHash</span> <span class=p>=</span> <span class=n>HashLicense</span><span class=p>(</span><span class=n>licenseCode</span><span class=p>),</span>
+    <span class=n>LicenseExpiryDate</span> <span class=p>=</span> <span class=n>DateTime</span><span class=p>.</span><span class=n>Now</span><span class=p>.</span><span class=n>AddYears</span><span class=p>(</span><span class=m>5</span><span class=p>),</span>
+    <span class=n>ProductId</span> <span class=p>=</span> <span class=n>xxxxx</span><span class=p>,</span>
+    <span class=n>LicenseUuid</span> <span class=p>=</span> <span class=n>Guid</span><span class=p>.</span><span class=n>NewGuid</span><span class=p>().</span><span class=n>ToString</span><span class=p>()</span>
+<span class=p>};</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>其他字段都能很方便的在程序内构造出来。<br>
 先看下 HashLicense 是做什么功能</p>
-<p><img src="http://cdn.aliyun.fzyyxx.com/Img/20200619214251.png" alt=""></p>
+<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200619214251.png alt></p>
 <p>逻辑基本是<br>
 前缀字符+授权Code本体，通过BlockCopy合并，最后计算出MD5结构。</p>
-<h1 id="验证激活">验证激活</h1>
+<h1 id=验证激活>验证激活</h1>
 <p>条件都齐活了，接下来写了个自动激活的工具。<br>
 工具作用仅仅是生成了文件存放到目录中。</p>
 <p>重开Fork后成功激活。<br>
-<img src="http://cdn.aliyun.fzyyxx.com/Img/20200619214529.png" alt=""></p>
-
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">xJoker</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2020-06-19
-        
-    </span>
-  </p>
-  
-  
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200619214529.png alt></p>
 </div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/fork/">Fork</a>
-          <a href="/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/">逆向研究</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/hangfire%E5%88%9D%E8%AF%95%E7%AC%94%E8%AE%B0/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Hangfire初试笔记</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/nest%E6%9B%B4%E6%96%B0es%E5%87%BA%E7%8E%B0404%E7%9A%84%E5%9D%91/">
-            <span class="next-text nav-default">NEST更新ES出现404的坑</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-
-  
-
-  
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-  <a href="https://xjoker.us/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>xJoker</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2020-06-19
+</span>
+</p>
 </div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-      <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
-
-  <span class="copyright-year">
-    &copy; 
-    2020 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span>
-  </span>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/fork/>Fork</a>
+<a href=/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/>逆向研究</a>
 </div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-
-
-
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
-
-
-
-
-
-
-
-
+<nav class=post-nav>
+<a class=prev href=/post/hangfire%E5%88%9D%E8%AF%95%E7%AC%94%E8%AE%B0/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Hangfire初试笔记</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
+<a class=next href=/post/nest%E6%9B%B4%E6%96%B0es%E5%87%BA%E7%8E%B0404%E7%9A%84%E5%9D%91/>
+<span class="next-text nav-default">NEST更新ES出现404的坑</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i>
+</a>
+</nav>
+</footer>
+</article>
+</div>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=social-links>
+<a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div>
+<div class=copyright>
+<span class=power-by>
+由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<div class=busuanzi-footer>
+<span id=busuanzi_container_site_pv> 本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次 </span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv> 本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人 </span>
+</div>
+<span class=copyright-year>
+&copy;
+2020 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span>
+</span>
+</div>
+</footer>
+<div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
+<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
+<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
 </body>
 </html>
