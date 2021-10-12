@@ -1,0 +1,551 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>微博APP模拟登录 - 菜鸡码农小丑</title>
+<meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="xJoker"><meta name=description content="前言废话 这笔记是很早之前(2019)写好的，目前微博的有手机认证，所以不要想了😀 现在发出来分享下吧(顺带测试下Github Action) 分析阶段 这次下载">
+<meta name=generator content="Hugo 0.88.1 with theme even">
+<link rel=canonical href=https://xjoker.us/post/%E5%BE%AE%E5%8D%9Aapp%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<meta property="og:title" content="微博APP模拟登录">
+<meta property="og:description" content="前言废话 这笔记是很早之前(2019)写好的，目前微博的有手机认证，所以不要想了😀 现在发出来分享下吧(顺带测试下Github Action) 分析阶段 这次下载">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://xjoker.us/post/%E5%BE%AE%E5%8D%9Aapp%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-10-12T10:50:02+08:00">
+<meta property="article:modified_time" content="2021-10-12T10:50:02+08:00">
+<meta itemprop=name content="微博APP模拟登录">
+<meta itemprop=description content="前言废话 这笔记是很早之前(2019)写好的，目前微博的有手机认证，所以不要想了😀 现在发出来分享下吧(顺带测试下Github Action) 分析阶段 这次下载"><meta itemprop=datePublished content="2021-10-12T10:50:02+08:00">
+<meta itemprop=dateModified content="2021-10-12T10:50:02+08:00">
+<meta itemprop=wordCount content="1436">
+<meta itemprop=keywords content="weibo,逆向研究,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="微博APP模拟登录">
+<meta name=twitter:description content="前言废话 这笔记是很早之前(2019)写好的，目前微博的有手机认证，所以不要想了😀 现在发出来分享下吧(顺带测试下Github Action) 分析阶段 这次下载"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>菜鸡码农小丑</a>
+</div>
+<div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>Home</li>
+</a><a href=/post/>
+<li class=mobile-menu-item>Archives</li>
+</a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li>
+</a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li>
+</a>
+</ul>
+</nav>
+<div class=container id=mobile-panel>
+<header id=header class=header>
+<div class=logo-wrapper>
+<a href=/ class=logo>菜鸡码农小丑</a>
+</div>
+<nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>Home</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>Archives</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>Tags</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>Categories</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>微博APP模拟登录</h1>
+<div class=post-meta>
+<span class=post-time> 2021-10-12 </span>
+<div class=post-category>
+<a href=/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/> 逆向研究 </a>
+</div>
+<span class=more-meta> 约 1436 字 </span>
+<span class=more-meta> 预计阅读 3 分钟 </span>
+<span id=busuanzi_container_page_pv class=more-meta> <span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读 </span>
+</div>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前言废话>前言废话</a></li>
+<li><a href=#分析阶段>分析阶段</a></li>
+<li><a href=#代码验证>代码验证</a></li>
+<li><a href=#测试>测试</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class=post-content>
+<h2 id=前言废话>前言废话</h2>
+<hr>
+<p>这笔记是很早之前(2019)写好的，目前微博的有手机认证，所以不要想了😀<br>
+现在发出来分享下吧(顺带测试下Github Action)</p>
+<h2 id=分析阶段>分析阶段</h2>
+<hr>
+<p>这次下载了两个版本的新浪微博<br>
+1.0.0 Weico 这个是最早版本的国际版微博<br>
+3.0.0 WeiboIntl 这个是目前新版本的</p>
+<p>首先先拿最早版本的做登录测试，发现还是可以正常的登录。</p>
+<p>通过抓包发现登录时请求的接口是: api.weibo.cn/2/account/login</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154318.png alt></p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154332.png alt></p>
+<p>Post 请求体大概分析能得出对应参数</p>
+<ul>
+<li>c - APP类型</li>
+<li>s - 签名</li>
+<li>u - 用户名</li>
+<li>p - 加密后的密码</li>
+</ul>
+<p>首先用了 GDA3.66 去做逆向分析，发现逆向的代码会有部分的缺失。在这耗费了太多的时间。</p>
+<p>不过好在也发现了登录的几个关键方法。</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154411.png alt></p>
+<p>这里对密码进行了加密，以及计算签名。 通过后续两个版本的抓包比较发现，签名是不会变化的。</p>
+<p>首先分析下 securityPsd 的流程</p>
+<ol>
+<li>将密码转为Byte[]。</li>
+<li>解密代码中写死的加密公钥。</li>
+<li>使用公钥加密密码。</li>
+<li>将密码转为Base64返回。</li>
+</ol>
+<p>根据上面来看，WeicoSecurityUtils 这个类很关键。
+<img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154507.png alt></p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154538.png alt></p>
+<p>整理了一下流程：</p>
+<ol>
+<li>使用 publicKeyInner 解密 publicKeyString</li>
+<li>使用解密后的 publicKeyString 作为公钥加密传入的密码</li>
+</ol>
+<p>这样密码加密后的密文就得出来了<br>
+现在就差 s 签名参数了<br>
+继续向下看发现计算 s 参数的关键方法：WeiboSecurityUtils.calculateSInJava<br>
+跟进去后发现调用的是 native 方法，搜索了下发现是调用 utility 的so库</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154629.png alt></p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154639.png alt></p>
+<p>根据传入的参数， Java的Context与 srcArray 和 Pin<br>
+看见传了context头就有点大，猜测可能会加入MAC或者手机号等做计算。因为抓包时都是同一设备做测试<br>
+只能先返回上层代码看看 srcArray 和 Pin 这两个怎么来的</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154716.png alt></p>
+<p>查看后就发现传入的 srcArray= username+password ，并且password是原始未加密的密码。<br>
+另一个Decode查看后应该是加密后的文本，解密后就是 Logutil的那个。 这日志打点的都暴露了&mldr;..</p>
+<p>接下来就研究下so文件里的逻辑了<br>
+加密方法存在 libutility.so 文件里，IDA中一下就能看见这个方法</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154743.png alt></p>
+<p>进入方法后，确认入参一致</p>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154758.png alt></p>
+<p>分析大致流程<br>
+<img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154839.png alt></p>
+<p>流程大概是 :</p>
+<ol>
+<li>将 username+password+pin 组合后，计算MD5</li>
+<li>根据 1、5、2、10、17、9、25、27 这些位置拿出MD5 字符串对应位置的字符</li>
+<li>返回计算好的s</li>
+</ol>
+<h2 id=代码验证>代码验证</h2>
+<hr>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span><span class=lnt>144
+</span><span class=lnt>145
+</span><span class=lnt>146
+</span><span class=lnt>147
+</span><span class=lnt>148
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=k>public</span> <span class=k>class</span> <span class=nc>AppLoginHelper</span>
+    <span class=p>{</span>
+        <span class=k>private</span> <span class=k>const</span> <span class=kt>string</span> <span class=n>RsaPubKey</span> <span class=p>=</span>
+            <span class=s>&#34;***&#34;</span><span class=p>;</span>
+
+        <span class=k>private</span> <span class=k>const</span> <span class=kt>string</span> <span class=n>PublicKeyInner</span> <span class=p>=</span>
+            <span class=s>&#34;***&#34;</span><span class=p>;</span>
+
+        <span class=k>private</span> <span class=k>const</span> <span class=kt>string</span> <span class=n>WeicoPin</span> <span class=p>=</span>
+            <span class=s>&#34;***&#34;</span><span class=p>;</span>
+
+        <span class=k>private</span> <span class=k>static</span> <span class=k>readonly</span> <span class=kt>int</span> <span class=n>MAX_DECRYPT_BLOCK</span> <span class=p>=</span> <span class=m>128</span><span class=p>;</span>
+        <span class=k>private</span> <span class=k>static</span> <span class=k>readonly</span> <span class=kt>int</span> <span class=n>MAX_ENCRYPT_BLOCK</span> <span class=p>=</span> <span class=m>117</span><span class=p>;</span>
+
+        <span class=k>public</span> <span class=n>AppLoginModel</span> <span class=n>GetLoginParam</span><span class=p>(</span><span class=kt>string</span> <span class=n>username</span><span class=p>,</span> <span class=kt>string</span> <span class=n>password</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=kt>var</span> <span class=n>result</span> <span class=p>=</span> <span class=k>new</span> <span class=n>AppLoginModel</span><span class=p>();</span>
+
+            <span class=kt>var</span> <span class=n>keyBytes</span> <span class=p>=</span> <span class=n>Convert</span><span class=p>.</span><span class=n>FromBase64String</span><span class=p>(</span><span class=n>RsaPubKey</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>dd</span> <span class=p>=</span> <span class=n>DecryptByPublicKey</span><span class=p>(</span><span class=n>keyBytes</span><span class=p>,</span> <span class=n>PublicKeyInner</span><span class=p>);</span>
+            <span class=n>result</span><span class=p>.</span><span class=n>p</span> <span class=p>=</span> <span class=n>Convert</span><span class=p>.</span><span class=n>ToBase64String</span><span class=p>(</span><span class=n>EncryptByPublicKey</span><span class=p>(</span><span class=n>Encoding</span><span class=p>.</span><span class=n>UTF8</span><span class=p>.</span><span class=n>GetBytes</span><span class=p>(</span><span class=n>password</span><span class=p>),</span>
+                <span class=n>Encoding</span><span class=p>.</span><span class=n>UTF8</span><span class=p>.</span><span class=n>GetString</span><span class=p>(</span><span class=n>dd</span><span class=p>)));</span>
+
+            <span class=c1>// s 标签计算
+</span><span class=c1></span>            <span class=kt>var</span> <span class=n>decodeStr</span> <span class=p>=</span> <span class=n>Decode</span><span class=p>(</span><span class=n>WeicoPin</span><span class=p>);</span>
+
+            <span class=kt>var</span> <span class=n>test1</span> <span class=p>=</span> <span class=s>$&#34;{username}{password}{decodeStr}&#34;</span><span class=p>;</span>
+
+            <span class=kt>var</span> <span class=n>fff</span> <span class=p>=</span> <span class=n>MdStringOld</span><span class=p>(</span><span class=n>test1</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>a1</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>1</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a2</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>5</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a3</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>2</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a4</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>10</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a5</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>17</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a6</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>9</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a7</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>25</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>a8</span> <span class=p>=</span> <span class=n>fff</span><span class=p>[</span><span class=m>27</span><span class=p>];</span>
+
+            <span class=n>result</span><span class=p>.</span><span class=n>s</span> <span class=p>=</span> <span class=s>$&#34;{a1}{a2}{a3}{a4}{a5}{a6}{a7}{a8}&#34;</span><span class=p>;</span>
+
+            <span class=n>result</span><span class=p>.</span><span class=n>u</span> <span class=p>=</span> <span class=n>username</span><span class=p>;</span>
+
+            <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+        <span class=p>}</span>
+
+        <span class=c1>/// &lt;summary&gt;
+</span><span class=c1></span>        <span class=c1>/// 微博 so库内 MD5加密
+</span><span class=c1></span>        <span class=c1>/// &lt;/summary&gt;
+</span><span class=c1></span>        <span class=c1>/// &lt;param name=&#34;str&#34;&gt;&lt;/param&gt;
+</span><span class=c1></span>        <span class=c1>/// &lt;returns&gt;&lt;/returns&gt;
+</span><span class=c1></span>        <span class=k>private</span> <span class=k>static</span> <span class=kt>string</span> <span class=n>MdStringOld</span><span class=p>(</span><span class=kt>string</span> <span class=n>str</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=kt>var</span> <span class=n>md5</span> <span class=p>=</span> <span class=n>MD5</span><span class=p>.</span><span class=n>Create</span><span class=p>();</span>
+            <span class=kt>var</span> <span class=n>s</span> <span class=p>=</span> <span class=n>md5</span><span class=p>.</span><span class=n>ComputeHash</span><span class=p>(</span><span class=n>Encoding</span><span class=p>.</span><span class=n>UTF8</span><span class=p>.</span><span class=n>GetBytes</span><span class=p>(</span><span class=n>str</span><span class=p>));</span>
+            <span class=k>return</span> <span class=n>s</span><span class=p>.</span><span class=n>Aggregate</span><span class=p>(</span><span class=s>&#34;&#34;</span><span class=p>,</span> <span class=p>(</span><span class=n>current</span><span class=p>,</span> <span class=n>t</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=n>current</span> <span class=p>+</span> <span class=n>t</span><span class=p>.</span><span class=n>ToString</span><span class=p>(</span><span class=s>&#34;x2&#34;</span><span class=p>));</span>
+        <span class=p>}</span>
+
+        <span class=k>private</span> <span class=k>static</span> <span class=kt>string</span> <span class=n>Decode</span><span class=p>(</span><span class=kt>string</span> <span class=n>encryptedStr</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=kt>var</span> <span class=n>dd</span> <span class=p>=</span> <span class=n>DecryptByPublicKey</span><span class=p>(</span><span class=n>Convert</span><span class=p>.</span><span class=n>FromBase64String</span><span class=p>(</span><span class=n>encryptedStr</span><span class=p>),</span> <span class=n>PublicKeyInner</span><span class=p>);</span>
+            <span class=k>return</span> <span class=n>Encoding</span><span class=p>.</span><span class=n>UTF8</span><span class=p>.</span><span class=n>GetString</span><span class=p>(</span><span class=n>dd</span><span class=p>);</span>
+        <span class=p>}</span>
+
+        <span class=k>private</span> <span class=k>static</span> <span class=kt>byte</span><span class=p>[]</span> <span class=n>DecryptByPublicKey</span><span class=p>(</span><span class=kt>byte</span><span class=p>[]</span> <span class=n>encryptedData</span><span class=p>,</span> <span class=kt>string</span> <span class=n>publicKey</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=kt>var</span> <span class=n>keyBytes</span> <span class=p>=</span> <span class=n>Convert</span><span class=p>.</span><span class=n>FromBase64String</span><span class=p>(</span><span class=n>publicKey</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>paraPub</span> <span class=p>=</span> <span class=n>ConvertFromPublicKey</span><span class=p>(</span><span class=n>keyBytes</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>privateRsa</span> <span class=p>=</span> <span class=k>new</span> <span class=n>RSACryptoServiceProvider</span><span class=p>();</span>
+            <span class=n>privateRsa</span><span class=p>.</span><span class=n>ImportParameters</span><span class=p>(</span><span class=n>paraPub</span><span class=p>);</span>
+
+            <span class=n>AsymmetricKeyParameter</span> <span class=n>pbk</span> <span class=p>=</span> <span class=n>DotNetUtilities</span><span class=p>.</span><span class=n>GetRsaPublicKey</span><span class=p>(</span><span class=n>paraPub</span><span class=p>);</span>
+
+            <span class=kt>var</span> <span class=n>c</span> <span class=p>=</span> <span class=n>CipherUtilities</span><span class=p>.</span><span class=n>GetCipher</span><span class=p>(</span><span class=s>&#34;RSA/ECB/PKCS1Padding&#34;</span><span class=p>);</span>
+            <span class=n>c</span><span class=p>.</span><span class=n>Init</span><span class=p>(</span><span class=k>false</span><span class=p>,</span> <span class=n>pbk</span><span class=p>);</span>
+
+            <span class=kt>var</span> <span class=n>inputLen</span> <span class=p>=</span> <span class=n>encryptedData</span><span class=p>.</span><span class=n>Length</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>offSet</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>i</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>outStream</span> <span class=p>=</span> <span class=k>new</span> <span class=n>MemoryStream</span><span class=p>();</span>
+            <span class=kt>byte</span><span class=p>[]</span> <span class=n>cache</span><span class=p>;</span>
+            <span class=k>while</span> <span class=p>(</span><span class=n>inputLen</span> <span class=p>-</span> <span class=n>offSet</span> <span class=p>&gt;</span> <span class=m>0</span><span class=p>)</span>
+            <span class=p>{</span>
+                <span class=k>if</span> <span class=p>(</span><span class=n>inputLen</span> <span class=p>-</span> <span class=n>offSet</span> <span class=p>&gt;</span> <span class=n>MAX_DECRYPT_BLOCK</span><span class=p>)</span>
+                    <span class=n>cache</span> <span class=p>=</span> <span class=n>c</span><span class=p>.</span><span class=n>DoFinal</span><span class=p>(</span><span class=n>encryptedData</span><span class=p>,</span> <span class=n>offSet</span><span class=p>,</span> <span class=n>MAX_DECRYPT_BLOCK</span><span class=p>);</span>
+                <span class=k>else</span>
+                    <span class=n>cache</span> <span class=p>=</span> <span class=n>c</span><span class=p>.</span><span class=n>DoFinal</span><span class=p>(</span><span class=n>encryptedData</span><span class=p>,</span> <span class=n>offSet</span><span class=p>,</span> <span class=n>inputLen</span> <span class=p>-</span> <span class=n>offSet</span><span class=p>);</span>
+
+                <span class=n>outStream</span><span class=p>.</span><span class=n>Write</span><span class=p>(</span><span class=n>cache</span><span class=p>,</span> <span class=m>0</span><span class=p>,</span> <span class=n>cache</span><span class=p>.</span><span class=n>Length</span><span class=p>);</span>
+                <span class=n>i</span><span class=p>++;</span>
+                <span class=n>offSet</span> <span class=p>=</span> <span class=n>i</span> <span class=p>*</span> <span class=n>MAX_DECRYPT_BLOCK</span><span class=p>;</span>
+            <span class=p>}</span>
+
+            <span class=kt>var</span> <span class=n>decryptedData</span> <span class=p>=</span> <span class=n>outStream</span><span class=p>.</span><span class=n>ToArray</span><span class=p>();</span>
+            <span class=n>outStream</span><span class=p>.</span><span class=n>Close</span><span class=p>();</span>
+            <span class=k>return</span> <span class=n>decryptedData</span><span class=p>;</span>
+        <span class=p>}</span>
+
+        <span class=k>private</span> <span class=k>static</span> <span class=kt>byte</span><span class=p>[]</span> <span class=n>EncryptByPublicKey</span><span class=p>(</span><span class=kt>byte</span><span class=p>[]</span> <span class=n>data</span><span class=p>,</span> <span class=kt>string</span> <span class=n>publicKey</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=kt>var</span> <span class=n>keyBytes</span> <span class=p>=</span> <span class=n>Convert</span><span class=p>.</span><span class=n>FromBase64String</span><span class=p>(</span><span class=n>publicKey</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>paraPub</span> <span class=p>=</span> <span class=n>ConvertFromPublicKey</span><span class=p>(</span><span class=n>keyBytes</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>privateRsa</span> <span class=p>=</span> <span class=k>new</span> <span class=n>RSACryptoServiceProvider</span><span class=p>();</span>
+            <span class=n>privateRsa</span><span class=p>.</span><span class=n>ImportParameters</span><span class=p>(</span><span class=n>paraPub</span><span class=p>);</span>
+
+            <span class=n>AsymmetricKeyParameter</span> <span class=n>pbk</span> <span class=p>=</span> <span class=n>DotNetUtilities</span><span class=p>.</span><span class=n>GetRsaPublicKey</span><span class=p>(</span><span class=n>paraPub</span><span class=p>);</span>
+
+            <span class=kt>var</span> <span class=n>c</span> <span class=p>=</span> <span class=n>CipherUtilities</span><span class=p>.</span><span class=n>GetCipher</span><span class=p>(</span><span class=s>&#34;RSA/ECB/PKCS1Padding&#34;</span><span class=p>);</span>
+            <span class=n>c</span><span class=p>.</span><span class=n>Init</span><span class=p>(</span><span class=k>true</span><span class=p>,</span> <span class=n>pbk</span><span class=p>);</span>
+
+            <span class=kt>var</span> <span class=n>inputLen</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=n>Length</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>offSet</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>i</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>outStream</span> <span class=p>=</span> <span class=k>new</span> <span class=n>MemoryStream</span><span class=p>();</span>
+            <span class=kt>byte</span><span class=p>[]</span> <span class=n>cache</span><span class=p>;</span>
+            <span class=k>while</span> <span class=p>(</span><span class=n>inputLen</span> <span class=p>-</span> <span class=n>offSet</span> <span class=p>&gt;</span> <span class=m>0</span><span class=p>)</span>
+            <span class=p>{</span>
+                <span class=k>if</span> <span class=p>(</span><span class=n>inputLen</span> <span class=p>-</span> <span class=n>offSet</span> <span class=p>&gt;</span> <span class=n>MAX_ENCRYPT_BLOCK</span><span class=p>)</span>
+                    <span class=n>cache</span> <span class=p>=</span> <span class=n>c</span><span class=p>.</span><span class=n>DoFinal</span><span class=p>(</span><span class=n>data</span><span class=p>,</span> <span class=n>offSet</span><span class=p>,</span> <span class=n>MAX_ENCRYPT_BLOCK</span><span class=p>);</span>
+                <span class=k>else</span>
+                    <span class=n>cache</span> <span class=p>=</span> <span class=n>c</span><span class=p>.</span><span class=n>DoFinal</span><span class=p>(</span><span class=n>data</span><span class=p>,</span> <span class=n>offSet</span><span class=p>,</span> <span class=n>inputLen</span> <span class=p>-</span> <span class=n>offSet</span><span class=p>);</span>
+
+                <span class=n>outStream</span><span class=p>.</span><span class=n>Write</span><span class=p>(</span><span class=n>cache</span><span class=p>,</span> <span class=m>0</span><span class=p>,</span> <span class=n>cache</span><span class=p>.</span><span class=n>Length</span><span class=p>);</span>
+                <span class=n>i</span><span class=p>++;</span>
+                <span class=n>offSet</span> <span class=p>=</span> <span class=n>i</span> <span class=p>*</span> <span class=n>MAX_ENCRYPT_BLOCK</span><span class=p>;</span>
+            <span class=p>}</span>
+
+            <span class=kt>var</span> <span class=n>decryptedData</span> <span class=p>=</span> <span class=n>outStream</span><span class=p>.</span><span class=n>ToArray</span><span class=p>();</span>
+            <span class=n>outStream</span><span class=p>.</span><span class=n>Close</span><span class=p>();</span>
+            <span class=k>return</span> <span class=n>decryptedData</span><span class=p>;</span>
+        <span class=p>}</span>
+
+        <span class=k>private</span> <span class=k>static</span> <span class=n>RSAParameters</span> <span class=n>ConvertFromPublicKey</span><span class=p>(</span><span class=kt>byte</span><span class=p>[]</span> <span class=n>pubkeyBytes</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=kt>var</span> <span class=n>keySize1024</span> <span class=p>=</span> <span class=n>pubkeyBytes</span><span class=p>.</span><span class=n>Length</span> <span class=p>==</span> <span class=m>162</span><span class=p>;</span>
+            <span class=kt>var</span> <span class=n>keySize2048</span> <span class=p>=</span> <span class=n>pubkeyBytes</span><span class=p>.</span><span class=n>Length</span> <span class=p>==</span> <span class=m>294</span><span class=p>;</span>
+            <span class=k>if</span> <span class=p>(!(</span><span class=n>keySize1024</span> <span class=p>||</span> <span class=n>keySize2048</span><span class=p>))</span>
+                <span class=k>throw</span> <span class=k>new</span> <span class=n>ArgumentException</span><span class=p>(</span><span class=s>&#34;pem file content is incorrect, Only support the key size is 1024 or 2048&#34;</span><span class=p>);</span>
+
+            <span class=kt>var</span> <span class=n>pemModulus</span> <span class=p>=</span> <span class=n>keySize1024</span> <span class=p>?</span> <span class=k>new</span> <span class=kt>byte</span><span class=p>[</span><span class=m>128</span><span class=p>]</span> <span class=p>:</span> <span class=k>new</span> <span class=kt>byte</span><span class=p>[</span><span class=m>256</span><span class=p>];</span>
+            <span class=kt>var</span> <span class=n>pemPublicExponent</span> <span class=p>=</span> <span class=k>new</span> <span class=kt>byte</span><span class=p>[</span><span class=m>3</span><span class=p>];</span>
+            <span class=n>Array</span><span class=p>.</span><span class=n>Copy</span><span class=p>(</span><span class=n>pubkeyBytes</span><span class=p>,</span> <span class=n>keySize1024</span> <span class=p>?</span> <span class=m>29</span> <span class=p>:</span> <span class=m>33</span><span class=p>,</span> <span class=n>pemModulus</span><span class=p>,</span> <span class=m>0</span><span class=p>,</span> <span class=n>keySize1024</span> <span class=p>?</span> <span class=m>128</span> <span class=p>:</span> <span class=m>256</span><span class=p>);</span>
+            <span class=n>Array</span><span class=p>.</span><span class=n>Copy</span><span class=p>(</span><span class=n>pubkeyBytes</span><span class=p>,</span> <span class=n>keySize1024</span> <span class=p>?</span> <span class=m>159</span> <span class=p>:</span> <span class=m>291</span><span class=p>,</span> <span class=n>pemPublicExponent</span><span class=p>,</span> <span class=m>0</span><span class=p>,</span> <span class=m>3</span><span class=p>);</span>
+            <span class=kt>var</span> <span class=n>para</span> <span class=p>=</span> <span class=k>new</span> <span class=n>RSAParameters</span><span class=p>();</span>
+            <span class=n>para</span><span class=p>.</span><span class=n>Modulus</span> <span class=p>=</span> <span class=n>pemModulus</span><span class=p>;</span>
+            <span class=n>para</span><span class=p>.</span><span class=n>Exponent</span> <span class=p>=</span> <span class=n>pemPublicExponent</span><span class=p>;</span>
+            <span class=k>return</span> <span class=n>para</span><span class=p>;</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=测试>测试</h2>
+<hr>
+<p><img src=https://cdn.aliyun.fzyyxx.com//Img/20211012154958.png alt></p>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>xJoker</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2021-10-12
+</span>
+</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/weibo/>weibo</a>
+<a href=/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/>逆向研究</a>
+</div>
+<nav class=post-nav>
+<a class=next href=/post/iis%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86gitea%E7%9A%84%E9%85%8D%E7%BD%AE/>
+<span class="next-text nav-default">IIS反向代理Gitea的配置</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i>
+</a>
+</nav>
+</footer>
+</article>
+</div>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=social-links>
+<a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div>
+<div class=copyright>
+<span class=power-by>
+由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<div class=busuanzi-footer>
+<span id=busuanzi_container_site_pv> 本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次 </span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv> 本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人 </span>
+</div>
+<span class=copyright-year>
+&copy;
+2019 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span>
+</span>
+</div>
+</footer>
+<div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
+<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
+<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+</body>
+</html>
