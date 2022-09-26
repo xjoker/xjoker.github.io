@@ -1,317 +1,49 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Windows编译ChromeDriver - 菜鸡码农小丑</title>
-<meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="xJoker"><meta name=description content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &amp;ldquo;使用 C++ 的桌面开发&amp;rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本">
-<meta name=generator content="Hugo 0.88.1 with theme even">
-<link rel=canonical href=https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
-<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="Windows编译ChromeDriver">
-<meta property="og:description" content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C++ 的桌面开发&rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2020-07-11T07:13:24+08:00">
-<meta property="article:modified_time" content="2020-07-11T07:13:24+08:00">
-<meta itemprop=name content="Windows编译ChromeDriver">
-<meta itemprop=description content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C++ 的桌面开发&rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本"><meta itemprop=datePublished content="2020-07-11T07:13:24+08:00">
-<meta itemprop=dateModified content="2020-07-11T07:13:24+08:00">
-<meta itemprop=wordCount content="741">
-<meta itemprop=keywords content="ChromeDriver,逆向研究,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Windows编译ChromeDriver">
-<meta name=twitter:description content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C++ 的桌面开发&rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>菜鸡码农小丑</a>
-</div>
-<div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Windows编译ChromeDriver - 菜鸡码农小丑</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="xJoker"><meta name=description content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &amp;ldquo;使用 C++ 的桌面开发&amp;rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本"><meta name=generator content="Hugo 0.104.0 with theme even"><link rel=canonical href=https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Windows编译ChromeDriver"><meta property="og:description" content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C++ 的桌面开发&rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本"><meta property="og:type" content="article"><meta property="og:url" content="https://xjoker.us/post/windows%E7%BC%96%E8%AF%91chromedriver/"><meta property="article:section" content="post"><meta property="article:published_time" content="2020-07-11T07:13:24+08:00"><meta property="article:modified_time" content="2020-07-11T07:13:24+08:00"><meta itemprop=name content="Windows编译ChromeDriver"><meta itemprop=description content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C++ 的桌面开发&rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本"><meta itemprop=datePublished content="2020-07-11T07:13:24+08:00"><meta itemprop=dateModified content="2020-07-11T07:13:24+08:00"><meta itemprop=wordCount content="741"><meta itemprop=keywords content="ChromeDriver,逆向研究,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Windows编译ChromeDriver"><meta name=twitter:description content="环境准备 Windows 10 Pro 2004 (19041.329) Visual Studio 2019 &ldquo;使用 C++ 的桌面开发&rdquo; C++ v14.25 ATL for v142 生成工具(x86 和 x64) C++ v14.25 MFC for v142 生成工具(x86 和 x64) Windows 10 SDK (SDK 版本"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>菜鸡码农小丑</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>菜鸡码农小丑</a>
-</div>
-<nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>Windows编译ChromeDriver</h1>
-<div class=post-meta>
-<span class=post-time> 2020-07-11 </span>
-<div class=post-category>
-<a href=/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/> 逆向研究 </a>
-</div>
-<span class=more-meta> 约 741 字 </span>
-<span class=more-meta> 预计阅读 2 分钟 </span>
-<span id=busuanzi_container_page_pv class=more-meta> <span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读 </span>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#环境准备>环境准备</a></li>
-<li><a href=#步骤>步骤</a>
-<ul>
-<li><a href=#下载编译工具包>下载编译工具包</a></li>
-<li><a href=#配置环境变量>配置环境变量</a></li>
-<li><a href=#获取源码>获取源码</a></li>
-<li><a href=#切换版本>切换版本</a></li>
-<li><a href=#编译测试>编译测试</a></li>
-<li><a href=#修改特征>修改特征</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-outdated>
-<div class=warn>
-<p>【注意】最后更新于 <span class=timeago datetime=2020-07-11T07:13:24 title="July 11, 2020">July 11, 2020</span>，文中内容可能已过时，请谨慎使用。</p>
-</div>
-</div>
-<div class=post-content>
-<h2 id=环境准备>环境准备</h2>
-<ul>
-<li>Windows 10 Pro 2004 (19041.329)</li>
-<li>Visual Studio 2019
-<ul>
-<li>&ldquo;使用 C++ 的桌面开发&rdquo;</li>
-<li>C++ v14.25 ATL for v142 生成工具(x86 和 x64)</li>
-<li>C++ v14.25 MFC for v142 生成工具(x86 和 x64)</li>
-</ul>
-</li>
-<li>Windows 10 SDK (SDK 版本不能小于10.0.19041)
-<ul>
-<li>&ldquo;Debugging Tools for Windows&rdquo;</li>
-</ul>
-</li>
-<li>Git</li>
-<li>存储源码的空间至少 50 GB</li>
-</ul>
-<h2 id=步骤>步骤</h2>
-<h3 id=下载编译工具包>下载编译工具包</h3>
-<p><a href=https://storage.googleapis.com/chrome-infra/depot_tools.zip>下载 depot_tools</a></p>
-<h3 id=配置环境变量>配置环境变量</h3>
-<p>因为工具包本身携带了python，为了避免系统的python影响导致失败。<br>
-在系统环境变量中配置工具包的路径，务必保证在最前面。</p>
-<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711072103.png alt></p>
-<p>另外需要添加一个系统变量</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>DEPOT_TOOLS_WIN_TOOLCHAIN=0
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=获取源码>获取源码</h3>
-<p>进入目录后使用命令</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=n>fetch</span> <span class=n>chromium</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>此处大约需要半个多小时吧&mldr;<br>
-根据个人网络情况有所不同
-完成后的目录结构<br>
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200711072450.png alt></p>
-<p>执行完成后执行</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=n>gclient</span> <span class=n>sync</span> <span class=p>-</span><span class=n>-force</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=切换版本>切换版本</h3>
-<p>因为每天都有很多commit进入master分支，我们需要是对应自己需要的版本来编译ChromeDriver。<br>
-所以根据自己安装的Chrome或者是需要的版本来编译。</p>
-<p>首先进入 src 目录，执行下面的命令</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>菜鸡码农小丑</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Windows编译ChromeDriver</h1><div class=post-meta><span class=post-time>2020-07-11</span><div class=post-category><a href=/categories/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/>逆向研究</a></div><span class=more-meta>约 741 字</span>
+<span class=more-meta>预计阅读 2 分钟</span>
+<span id=busuanzi_container_page_pv class=more-meta><span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#环境准备>环境准备</a></li><li><a href=#步骤>步骤</a><ul><li><a href=#下载编译工具包>下载编译工具包</a></li><li><a href=#配置环境变量>配置环境变量</a></li><li><a href=#获取源码>获取源码</a></li><li><a href=#切换版本>切换版本</a></li><li><a href=#编译测试>编译测试</a></li><li><a href=#修改特征>修改特征</a></li></ul></li></ul></nav></div></div><div class=post-outdated><div class=warn><p>【注意】最后更新于 <span class=timeago datetime=2020-07-11T07:13:24 title="July 11, 2020">July 11, 2020</span>，文中内容可能已过时，请谨慎使用。</p></div></div><div class=post-content><h2 id=环境准备>环境准备</h2><ul><li>Windows 10 Pro 2004 (19041.329)</li><li>Visual Studio 2019<ul><li>&ldquo;使用 C++ 的桌面开发&rdquo;</li><li>C++ v14.25 ATL for v142 生成工具(x86 和 x64)</li><li>C++ v14.25 MFC for v142 生成工具(x86 和 x64)</li></ul></li><li>Windows 10 SDK (SDK 版本不能小于10.0.19041)<ul><li>&ldquo;Debugging Tools for Windows&rdquo;</li></ul></li><li>Git</li><li>存储源码的空间至少 50 GB</li></ul><h2 id=步骤>步骤</h2><h3 id=下载编译工具包>下载编译工具包</h3><p><a href=https://storage.googleapis.com/chrome-infra/depot_tools.zip>下载 depot_tools</a></p><h3 id=配置环境变量>配置环境变量</h3><p>因为工具包本身携带了python，为了避免系统的python影响导致失败。<br>在系统环境变量中配置工具包的路径，务必保证在最前面。</p><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711072103.png alt></p><p>另外需要添加一个系统变量</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>DEPOT_TOOLS_WIN_TOOLCHAIN=0
+</span></span></code></pre></td></tr></table></div></div><h3 id=获取源码>获取源码</h3><p>进入目录后使用命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=line><span class=cl><span class=n>fetch</span> <span class=n>chromium</span>
+</span></span></code></pre></td></tr></table></div></div><p>此处大约需要半个多小时吧&mldr;<br>根据个人网络情况有所不同
+完成后的目录结构<br><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711072450.png alt></p><p>执行完成后执行</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=line><span class=cl><span class=n>gclient</span> <span class=n>sync</span> <span class=p>-</span><span class=n>-force</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=切换版本>切换版本</h3><p>因为每天都有很多commit进入master分支，我们需要是对应自己需要的版本来编译ChromeDriver。<br>所以根据自己安装的Chrome或者是需要的版本来编译。</p><p>首先进入 src 目录，执行下面的命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=n>gclient</span> <span class=n>sync</span> <span class=p>-</span><span class=n>-with_branch_heads</span> <span class=p>-</span><span class=n>-with_tags</span>
-<span class=n>git</span> <span class=n>fetch</span> <span class=p>-</span><span class=n>-tags</span>
-<span class=n>git</span> <span class=n>checkout</span> <span class=n>-b</span> <span class=n>ChromeDriver</span> <span class=n>tags</span><span class=p>/</span><span class=n>84</span><span class=p>.</span><span class=n>0</span><span class=p>.</span><span class=n>4147</span><span class=p>.</span><span class=n>85</span>
-<span class=n>gclient</span> <span class=n>sync</span> <span class=p>-</span><span class=n>-with_branch_heads</span> <span class=p>-</span><span class=n>-with_tags</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=编译测试>编译测试</h3>
-<p>进入src目录，执行配置文件生成命令</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=n>gn</span> <span class=n>gen</span> <span class=n>out</span><span class=p>/</span><span class=n>Release</span> <span class=err>–</span><span class=n>-args</span><span class=p>=</span><span class=s2>&#34;is_debug=false&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>此命令是生成正式版本的，先生成一次确认一下环境和其他是否有问题<br>
-接着开始编译</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=n>ninja</span> <span class=n>-C</span> <span class=n>out</span><span class=p>\</span><span class=n>Release</span> <span class=n>chromedriver</span> <span class=n>-j16</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>其中 &ldquo;-jN&rdquo; 根据你CPU的核心数量定义<br>
-编译过程在我 AMD 3700X 的机器上耗时 10 分钟左右，具体时间需要根据机器配置来。</p>
-<p>(十分消耗资源呢&mldr;.)
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200711175910.png alt></p>
-<p>完成后，文件在 src\out\Release 中。<br>
-测试可以正常执行就就可以下一步了</p>
-<h3 id=修改特征>修改特征</h3>
-<p>特征文件路径：src\chrome\test\chromedriver\js\call_function.js</p>
-<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711181336.png alt></p>
-<p>这里的 &ldquo;cdc_asdjflasutopfhvcZLmcfl_&rdquo; 就是多数验证滑块检测是否由ChromeDriver驱动的地方。<br>
-一般是通过下面的方法来断定</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>window</span><span class=p>[</span><span class=s2>&#34;$cdc_asdjflasutopfhvcZLmcfl_&#34;</span><span class=p>]</span><span class=o>||</span><span class=nb>document</span><span class=p>[</span><span class=s2>&#34;$cdc_asdjflasutopfhvcZLmcfl_&#34;</span><span class=p>]</span><span class=o>?</span><span class=kc>true</span><span class=o>:</span><span class=kc>false</span><span class=p>);</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711182634.png alt></p>
-<p>我们直接把这串改成别的随机串即可。例如 &ldquo;CXsHPv8coH9i2iO8uWXRremABR_&rdquo;</p>
-<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711182720.png alt></p>
-<p>然后在根据上一个步骤去编译，成功后测试就会发现已经无法检测出特征了。</p>
-</div>
-<div class=post-copyright>
-<p class=copyright-item>
-<span class=item-title>文章作者</span>
-<span class=item-content>xJoker</span>
-</p>
-<p class=copyright-item>
-<span class=item-title>上次更新</span>
-<span class=item-content>
-2020-07-11
-</span>
-</p>
-</div>
-<footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/chromedriver/>ChromeDriver</a>
-<a href=/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/>逆向研究</a>
-</div>
-<nav class=post-nav>
-<a class=prev href=/post/iis%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86gitea%E7%9A%84%E9%85%8D%E7%BD%AE/>
-<i class="iconfont icon-left"></i>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=line><span class=cl><span class=n>gclient</span> <span class=n>sync</span> <span class=p>-</span><span class=n>-with_branch_heads</span> <span class=p>-</span><span class=n>-with_tags</span>
+</span></span><span class=line><span class=cl><span class=n>git</span> <span class=n>fetch</span> <span class=p>-</span><span class=n>-tags</span>
+</span></span><span class=line><span class=cl><span class=n>git</span> <span class=n>checkout</span> <span class=n>-b</span> <span class=n>ChromeDriver</span> <span class=n>tags</span><span class=p>/</span><span class=n>84</span><span class=p>.</span><span class=n>0</span><span class=p>.</span><span class=n>4147</span><span class=p>.</span><span class=n>85</span>
+</span></span><span class=line><span class=cl><span class=n>gclient</span> <span class=n>sync</span> <span class=p>-</span><span class=n>-with_branch_heads</span> <span class=p>-</span><span class=n>-with_tags</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=编译测试>编译测试</h3><p>进入src目录，执行配置文件生成命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=line><span class=cl><span class=n>gn</span> <span class=n>gen</span> <span class=n>out</span><span class=p>/</span><span class=n>Release</span> <span class=err>–</span><span class=n>-args</span><span class=p>=</span><span class=s2>&#34;is_debug=false&#34;</span>
+</span></span></code></pre></td></tr></table></div></div><p>此命令是生成正式版本的，先生成一次确认一下环境和其他是否有问题<br>接着开始编译</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=line><span class=cl><span class=n>ninja</span> <span class=n>-C</span> <span class=n>out</span><span class=p>\</span><span class=n>Release</span> <span class=n>chromedriver</span> <span class=n>-j16</span>
+</span></span></code></pre></td></tr></table></div></div><p>其中 &ldquo;-jN&rdquo; 根据你CPU的核心数量定义<br>编译过程在我 AMD 3700X 的机器上耗时 10 分钟左右，具体时间需要根据机器配置来。</p><p>(十分消耗资源呢&mldr;.)
+<img src=http://cdn.aliyun.fzyyxx.com/Img/20200711175910.png alt></p><p>完成后，文件在 src\out\Release 中。<br>测试可以正常执行就就可以下一步了</p><h3 id=修改特征>修改特征</h3><p>特征文件路径：src\chrome\test\chromedriver\js\call_function.js</p><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711181336.png alt></p><p>这里的 &ldquo;cdc_asdjflasutopfhvcZLmcfl_&rdquo; 就是多数验证滑块检测是否由ChromeDriver驱动的地方。<br>一般是通过下面的方法来断定</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>window</span><span class=p>[</span><span class=s2>&#34;$cdc_asdjflasutopfhvcZLmcfl_&#34;</span><span class=p>]</span><span class=o>||</span><span class=nb>document</span><span class=p>[</span><span class=s2>&#34;$cdc_asdjflasutopfhvcZLmcfl_&#34;</span><span class=p>]</span><span class=o>?</span><span class=kc>true</span><span class=o>:</span><span class=kc>false</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711182634.png alt></p><p>我们直接把这串改成别的随机串即可。例如 &ldquo;CXsHPv8coH9i2iO8uWXRremABR_&rdquo;</p><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200711182720.png alt></p><p>然后在根据上一个步骤去编译，成功后测试就会发现已经无法检测出特征了。</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>xJoker</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2020-07-11</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/chromedriver/>ChromeDriver</a>
+<a href=/tags/%E9%80%86%E5%90%91%E7%A0%94%E7%A9%B6/>逆向研究</a></div><nav class=post-nav><a class=prev href=/post/iis%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86gitea%E7%9A%84%E9%85%8D%E7%BD%AE/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">IIS反向代理Gitea的配置</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/remotedesktopmanager%E5%8E%BB%E9%99%A4%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81/>
-<span class="next-text nav-default">RemoteDesktopManager去除网络验证</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/remotedesktopmanager%E5%8E%BB%E9%99%A4%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81/><span class="next-text nav-default">RemoteDesktopManager去除网络验证</span>
 <span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav>
-</footer>
-</article>
-</div>
-<script src=https://utteranc.es/client.js repo=xjoker/xjoker.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script>
-<noscript>Please enable JavaScript to view the <a href=https://github.com/utterance>comments powered by utterances.</a></noscript>
-</div>
-</main>
-<footer id=footer class=footer>
-<div class=social-links>
-<a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
-<span class=power-by>
-由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
-</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><script src=https://utteranc.es/client.js repo=xjoker/xjoker.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><noscript>Please enable JavaScript to view the <a href=https://github.com/utterance>comments powered by utterances.</a></noscript></div></main><footer id=footer class=footer><div class=social-links><a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>
-<span class=theme-info>
-主题 -
-<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
-</span>
-<div class=busuanzi-footer>
-<span id=busuanzi_container_site_pv> 本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次 </span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次</span>
 <span class=division>|</span>
-<span id=busuanzi_container_site_uv> 本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人 </span>
-</div>
-<span class=copyright-year>
-&copy;
+<span id=busuanzi_container_site_uv>本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人</span></div><span class=copyright-year>&copy;
 2019 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span>
-</span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
-<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
-</body>
-</html>
+<script>var languageCode="en".replace(/-/g,"_").replace(/_(.*)/,function(e,t){return e.replace(t,t.toUpperCase())});timeago().render(document.querySelectorAll(".timeago"),languageCode),timeago.cancel()</script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script></body></html>

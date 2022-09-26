@@ -1,180 +1,25 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Hangfire初试笔记 - 菜鸡码农小丑</title>
-<meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="xJoker"><meta name=description content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构">
-<meta name=generator content="Hugo 0.88.1 with theme even">
-<link rel=canonical href=https://xjoker.us/post/hangfire%E5%88%9D%E8%AF%95%E7%AC%94%E8%AE%B0/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
-<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="Hangfire初试笔记">
-<meta property="og:description" content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://xjoker.us/post/hangfire%E5%88%9D%E8%AF%95%E7%AC%94%E8%AE%B0/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2020-06-22T22:09:28+08:00">
-<meta property="article:modified_time" content="2020-06-22T22:09:28+08:00">
-<meta itemprop=name content="Hangfire初试笔记">
-<meta itemprop=description content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构"><meta itemprop=datePublished content="2020-06-22T22:09:28+08:00">
-<meta itemprop=dateModified content="2020-06-22T22:09:28+08:00">
-<meta itemprop=wordCount content="1112">
-<meta itemprop=keywords content="Hangfire,Quartz,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Hangfire初试笔记">
-<meta name=twitter:description content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>菜鸡码农小丑</a>
-</div>
-<div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Hangfire初试笔记 - 菜鸡码农小丑</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="xJoker"><meta name=description content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构"><meta name=generator content="Hugo 0.104.0 with theme even"><link rel=canonical href=https://xjoker.us/post/hangfire%E5%88%9D%E8%AF%95%E7%AC%94%E8%AE%B0/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.bbcfd043a69d0ad0bb759dda8969ab409f7b57abde3521c6eced047b0d5c9a54.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Hangfire初试笔记"><meta property="og:description" content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构"><meta property="og:type" content="article"><meta property="og:url" content="https://xjoker.us/post/hangfire%E5%88%9D%E8%AF%95%E7%AC%94%E8%AE%B0/"><meta property="article:section" content="post"><meta property="article:published_time" content="2020-06-22T22:09:28+08:00"><meta property="article:modified_time" content="2020-06-22T22:09:28+08:00"><meta itemprop=name content="Hangfire初试笔记"><meta itemprop=description content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构"><meta itemprop=datePublished content="2020-06-22T22:09:28+08:00"><meta itemprop=dateModified content="2020-06-22T22:09:28+08:00"><meta itemprop=wordCount content="1112"><meta itemprop=keywords content="Hangfire,Quartz,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hangfire初试笔记"><meta name=twitter:description content="Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。 我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。 开发环境 VS 2019 / .NET Framework 4.6.2 Demo构"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>菜鸡码农小丑</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>菜鸡码农小丑</a>
-</div>
-<nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>Hangfire初试笔记</h1>
-<div class=post-meta>
-<span class=post-time> 2020-06-22 </span>
-<div class=post-category>
-<a href=/categories/csharp/> CSharp </a>
-</div>
-<span class=more-meta> 约 1112 字 </span>
-<span class=more-meta> 预计阅读 3 分钟 </span>
-<span id=busuanzi_container_page_pv class=more-meta> <span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读 </span>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#开发环境>开发环境</a></li>
-<li><a href=#demo构建>Demo构建</a></li>
-<li><a href=#调试>调试</a></li>
-<li><a href=#执行模式>执行模式</a>
-<ul>
-<li><a href=#fire-and-forget-立即执行>Fire-and-forget 立即执行</a></li>
-<li><a href=#schedule-周期任务>Schedule 周期任务</a></li>
-<li><a href=#crontab-计划任务>Crontab 计划任务</a></li>
-<li><a href=#continuejobwith-连续性任务>ContinueJobWith 连续性任务</a></li>
-</ul>
-</li>
-<li><a href=#任务的异常处理>任务的异常处理</a></li>
-<li><a href=#queue设定>Queue设定</a></li>
-<li><a href=#其他>其他</a>
-<ul>
-<li><a href=#并发限制>并发限制</a></li>
-<li><a href=#任务名称>任务名称</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-outdated>
-<div class=warn>
-<p>【注意】最后更新于 <span class=timeago datetime=2020-06-22T22:09:28 title="June 22, 2020">June 22, 2020</span>，文中内容可能已过时，请谨慎使用。</p>
-</div>
-</div>
-<div class=post-content>
-<p>Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。
-我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。</p>
-<h2 id=开发环境>开发环境</h2>
-<p>VS 2019 / .NET Framework 4.6.2</p>
-<h2 id=demo构建>Demo构建</h2>
-<p>需要如下 Nuget 包</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>菜鸡码农小丑</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Hangfire初试笔记</h1><div class=post-meta><span class=post-time>2020-06-22</span><div class=post-category><a href=/categories/csharp/>CSharp</a></div><span class=more-meta>约 1112 字</span>
+<span class=more-meta>预计阅读 3 分钟</span>
+<span id=busuanzi_container_page_pv class=more-meta><span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#开发环境>开发环境</a></li><li><a href=#demo构建>Demo构建</a></li><li><a href=#调试>调试</a></li><li><a href=#执行模式>执行模式</a><ul><li><a href=#fire-and-forget-立即执行>Fire-and-forget 立即执行</a></li><li><a href=#schedule-周期任务>Schedule 周期任务</a></li><li><a href=#crontab-计划任务>Crontab 计划任务</a></li><li><a href=#continuejobwith-连续性任务>ContinueJobWith 连续性任务</a></li></ul></li><li><a href=#任务的异常处理>任务的异常处理</a></li><li><a href=#queue设定>Queue设定</a></li><li><a href=#其他>其他</a><ul><li><a href=#并发限制>并发限制</a></li><li><a href=#任务名称>任务名称</a></li></ul></li></ul></nav></div></div><div class=post-outdated><div class=warn><p>【注意】最后更新于 <span class=timeago datetime=2020-06-22T22:09:28 title="June 22, 2020">June 22, 2020</span>，文中内容可能已过时，请谨慎使用。</p></div></div><div class=post-content><p>Hangfire 是一个和 Quartz.Net 差不多的库，但是比较好的是 Hangfire 提供了web界面。
+我的需求很简单，简单的一个控制台中能替代 Quartz.Net 执行任务。</p><h2 id=开发环境>开发环境</h2><p>VS 2019 / .NET Framework 4.6.2</p><h2 id=demo构建>Demo构建</h2><p>需要如下 Nuget 包</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>Install-Package Microsoft.AspNet.WebApi.OwinSelfHost
-Install-Package Microsoft.Owin.Diagnostics
-Install-Package Microsoft.Owin.Host.SystemWeb
-Install-Package Hangfire
-Install-Package Hangfire.Console
-</code></pre></td></tr></table>
-</div>
-</div><p>如果是非持久化存储，则安装</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>Install-Package Hangfire.MemoryStorage  
-</code></pre></td></tr></table>
-</div>
-</div><p>持久化的话官方有提供数据库和Redis的选项，但是Redis是收费选项。<br>
-这里可以用开源版本来替代</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>Install-Package Hangfire.Redis.StackExchange
-</code></pre></td></tr></table>
-</div>
-</div><p>Program.cs</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Install-Package Microsoft.AspNet.WebApi.OwinSelfHost
+</span></span><span class=line><span class=cl>Install-Package Microsoft.Owin.Diagnostics
+</span></span><span class=line><span class=cl>Install-Package Microsoft.Owin.Host.SystemWeb
+</span></span><span class=line><span class=cl>Install-Package Hangfire
+</span></span><span class=line><span class=cl>Install-Package Hangfire.Console
+</span></span></code></pre></td></tr></table></div></div><p>如果是非持久化存储，则安装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Install-Package Hangfire.MemoryStorage  
+</span></span></code></pre></td></tr></table></div></div><p>持久化的话官方有提供数据库和Redis的选项，但是Redis是收费选项。<br>这里可以用开源版本来替代</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Install-Package Hangfire.Redis.StackExchange
+</span></span></code></pre></td></tr></table></div></div><p>Program.cs</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -193,33 +38,26 @@ Install-Package Hangfire.Console
 </span><span class=lnt>17
 </span><span class=lnt>18
 </span><span class=lnt>19
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp>        <span class=k>private</span> <span class=k>static</span> <span class=k>void</span> <span class=n>Main</span><span class=p>(</span><span class=kt>string</span><span class=p>[]</span> <span class=n>args</span><span class=p>)</span>
-        <span class=p>{</span>
-            <span class=c1>// Redis 配置
-</span><span class=c1></span>            <span class=kt>var</span> <span class=n>redisOption</span> <span class=p>=</span> <span class=k>new</span> <span class=n>RedisStorageOptions</span><span class=p>()</span>
-            <span class=p>{</span>
-                <span class=n>Db</span> <span class=p>=</span> <span class=m>10</span><span class=p>,</span>
-                <span class=n>Prefix</span> <span class=p>=</span> <span class=s>&#34;TestA:&#34;</span>
-            <span class=p>};</span>
-            <span class=c1>// 使用Redis存储
-</span><span class=c1></span>            <span class=n>GlobalConfiguration</span><span class=p>.</span><span class=n>Configuration</span><span class=p>.</span><span class=n>UseRedisStorage</span><span class=p>(</span><span class=s>&#34;127.0.0.1&#34;</span><span class=p>,</span> <span class=n>redisOption</span><span class=p>);</span>
-            <span class=c1>// 注册一个计划任务
-</span><span class=c1></span>            <span class=n>RecurringJob</span><span class=p>.</span><span class=n>AddOrUpdate</span><span class=p>(</span><span class=s>&#34;输出时间&#34;</span><span class=p>,</span> <span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>JobCenter</span><span class=p>.</span><span class=n>JobA</span><span class=p>()),</span> <span class=n>Cron</span><span class=p>.</span><span class=n>Minutely</span><span class=p>);</span>
-            <span class=c1>// 注册个OWIN 可以在本机开启控制台
-</span><span class=c1></span>            <span class=n>StartOptions</span> <span class=n>options</span> <span class=p>=</span> <span class=k>new</span> <span class=n>StartOptions</span><span class=p>();</span>
-            <span class=n>options</span><span class=p>.</span><span class=n>Urls</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=s>&#34;http://localhost:9095&#34;</span><span class=p>);</span>
-            <span class=n>WebApp</span><span class=p>.</span><span class=n>Start</span><span class=p>&lt;</span><span class=n>Startup</span><span class=p>&gt;(</span><span class=n>options</span><span class=p>);</span>
-            <span class=c1>// 阻止控制台关闭
-</span><span class=c1></span>            <span class=n>Thread</span><span class=p>.</span><span class=n>Sleep</span><span class=p>(</span><span class=n>Timeout</span><span class=p>.</span><span class=n>Infinite</span><span class=p>);</span>
-        <span class=p>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Startup.cs</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl>        <span class=k>private</span> <span class=k>static</span> <span class=k>void</span> <span class=n>Main</span><span class=p>(</span><span class=kt>string</span><span class=p>[]</span> <span class=n>args</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// Redis 配置</span>
+</span></span><span class=line><span class=cl>            <span class=kt>var</span> <span class=n>redisOption</span> <span class=p>=</span> <span class=k>new</span> <span class=n>RedisStorageOptions</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>            <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>Db</span> <span class=p>=</span> <span class=m>10</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=n>Prefix</span> <span class=p>=</span> <span class=s>&#34;TestA:&#34;</span>
+</span></span><span class=line><span class=cl>            <span class=p>};</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 使用Redis存储</span>
+</span></span><span class=line><span class=cl>            <span class=n>GlobalConfiguration</span><span class=p>.</span><span class=n>Configuration</span><span class=p>.</span><span class=n>UseRedisStorage</span><span class=p>(</span><span class=s>&#34;127.0.0.1&#34;</span><span class=p>,</span> <span class=n>redisOption</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 注册一个计划任务</span>
+</span></span><span class=line><span class=cl>            <span class=n>RecurringJob</span><span class=p>.</span><span class=n>AddOrUpdate</span><span class=p>(</span><span class=s>&#34;输出时间&#34;</span><span class=p>,</span> <span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>JobCenter</span><span class=p>.</span><span class=n>JobA</span><span class=p>()),</span> <span class=n>Cron</span><span class=p>.</span><span class=n>Minutely</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 注册个OWIN 可以在本机开启控制台</span>
+</span></span><span class=line><span class=cl>            <span class=n>StartOptions</span> <span class=n>options</span> <span class=p>=</span> <span class=k>new</span> <span class=n>StartOptions</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=n>options</span><span class=p>.</span><span class=n>Urls</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=s>&#34;http://localhost:9095&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=n>WebApp</span><span class=p>.</span><span class=n>Start</span><span class=p>&lt;</span><span class=n>Startup</span><span class=p>&gt;(</span><span class=n>options</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 阻止控制台关闭</span>
+</span></span><span class=line><span class=cl>            <span class=n>Thread</span><span class=p>.</span><span class=n>Sleep</span><span class=p>(</span><span class=n>Timeout</span><span class=p>.</span><span class=n>Infinite</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>Startup.cs</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -235,86 +73,36 @@ Install-Package Hangfire.Console
 </span><span class=lnt>14
 </span><span class=lnt>15
 </span><span class=lnt>16
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=k>using</span> <span class=nn>Hangfire</span><span class=p>;</span>
-<span class=k>using</span> <span class=nn>Microsoft.Owin</span><span class=p>;</span>
-<span class=k>using</span> <span class=nn>Owin</span><span class=p>;</span>
-<span class=na>[assembly: OwinStartup(typeof(ConsoleApp1.Startup))]</span>
-<span class=k>namespace</span> <span class=nn>ConsoleApp1</span>
-<span class=p>{</span>
-    <span class=k>public</span> <span class=k>class</span> <span class=nc>Startup</span>
-    <span class=p>{</span>
-        <span class=k>public</span> <span class=k>void</span> <span class=n>Configuration</span><span class=p>(</span><span class=n>IAppBuilder</span> <span class=n>app</span><span class=p>)</span>
-        <span class=p>{</span>
-            <span class=c1>// 有关如何配置应用程序的详细信息，请访问 https://go.microsoft.com/fwlink/?LinkID=316888
-</span><span class=c1></span>            <span class=n>app</span><span class=p>.</span><span class=n>UseHangfireDashboard</span><span class=p>();</span>
-            <span class=n>app</span><span class=p>.</span><span class=n>UseHangfireServer</span><span class=p>();</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id=调试>调试</h2>
-<p>启动控制台，可见计划任务开始执行了。<br>
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200622211520.png alt></p>
-<p>打开网页 http://localhost:9095/hangfire<br>
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200622211719.png alt></p>
-<p>可以看见计划任务的执行记录，带入参数等。<br>
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200622211805.png alt></p>
-<h2 id=执行模式>执行模式</h2>
-<p>Hangfire 的执行模式免费的状态下有4种</p>
-<h3 id=fire-and-forget-立即执行>Fire-and-forget 立即执行</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=n>BackgroundJob</span><span class=p>.</span><span class=n>Enqueue</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>&#34;Hello, world!&#34;</span><span class=p>));</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>单次执行咯&mldr;</p>
-<h3 id=schedule-周期任务>Schedule 周期任务</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=n>BackgroundJob</span><span class=p>.</span><span class=n>Schedule</span><span class=p>((()</span> <span class=p>=&gt;</span> <span class=n>Console</span><span class=p>.</span><span class=n>Write</span><span class=p>(</span><span class=s>&#34;.&#34;</span><span class=p>)),</span> <span class=n>TimeSpan</span><span class=p>.</span><span class=n>FromMinutes</span><span class=p>(</span><span class=m>1</span><span class=p>));</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>这个模式会根据时间间隔重复执行任务。</p>
-<h3 id=crontab-计划任务>Crontab 计划任务</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=k>using</span> <span class=nn>Hangfire</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.Owin</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Owin</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=na>[assembly: OwinStartup(typeof(ConsoleApp1.Startup))]</span>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nn>ConsoleApp1</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>class</span> <span class=nc>Startup</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>public</span> <span class=k>void</span> <span class=n>Configuration</span><span class=p>(</span><span class=n>IAppBuilder</span> <span class=n>app</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 有关如何配置应用程序的详细信息，请访问 https://go.microsoft.com/fwlink/?LinkID=316888</span>
+</span></span><span class=line><span class=cl>            <span class=n>app</span><span class=p>.</span><span class=n>UseHangfireDashboard</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=n>app</span><span class=p>.</span><span class=n>UseHangfireServer</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=调试>调试</h2><p>启动控制台，可见计划任务开始执行了。<br><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622211520.png alt></p><p>打开网页 http://localhost:9095/hangfire<br><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622211719.png alt></p><p>可以看见计划任务的执行记录，带入参数等。<br><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622211805.png alt></p><h2 id=执行模式>执行模式</h2><p>Hangfire 的执行模式免费的状态下有4种</p><h3 id=fire-and-forget-立即执行>Fire-and-forget 立即执行</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=n>BackgroundJob</span><span class=p>.</span><span class=n>Enqueue</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>&#34;Hello, world!&#34;</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><p>单次执行咯&mldr;</p><h3 id=schedule-周期任务>Schedule 周期任务</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=n>BackgroundJob</span><span class=p>.</span><span class=n>Schedule</span><span class=p>((()</span> <span class=p>=&gt;</span> <span class=n>Console</span><span class=p>.</span><span class=n>Write</span><span class=p>(</span><span class=s>&#34;.&#34;</span><span class=p>)),</span> <span class=n>TimeSpan</span><span class=p>.</span><span class=n>FromMinutes</span><span class=p>(</span><span class=m>1</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><p>这个模式会根据时间间隔重复执行任务。</p><h3 id=crontab-计划任务>Crontab 计划任务</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=n>RecurringJob</span><span class=p>.</span><span class=n>AddOrUpdate</span><span class=p>(</span><span class=s>&#34;输出时间&#34;</span><span class=p>,</span> <span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>JobCenter</span><span class=p>.</span><span class=n>JobA</span><span class=p>()),</span> <span class=n>Cron</span><span class=p>.</span><span class=n>Minutely</span><span class=p>);</span>
-<span class=n>RecurringJob</span><span class=p>.</span><span class=n>AddOrUpdate</span><span class=p>(</span><span class=s>&#34;输出时间&#34;</span><span class=p>,</span> <span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>JobCenter</span><span class=p>.</span><span class=n>JobA</span><span class=p>()),</span> <span class=s>&#34;0 */1 * ? * *&#34;</span><span class=p>);</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>在这种模式下，可以设置Job的名称。这个名称可以在控制台中看见，字段是”编号“。<br>
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200622220004.png alt>
-目前用的最多的应该就这种模式了。</p>
-<h3 id=continuejobwith-连续性任务>ContinueJobWith 连续性任务</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=n>RecurringJob</span><span class=p>.</span><span class=n>AddOrUpdate</span><span class=p>(</span><span class=s>&#34;输出时间&#34;</span><span class=p>,</span> <span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>JobCenter</span><span class=p>.</span><span class=n>JobA</span><span class=p>()),</span> <span class=n>Cron</span><span class=p>.</span><span class=n>Minutely</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>RecurringJob</span><span class=p>.</span><span class=n>AddOrUpdate</span><span class=p>(</span><span class=s>&#34;输出时间&#34;</span><span class=p>,</span> <span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>JobCenter</span><span class=p>.</span><span class=n>JobA</span><span class=p>()),</span> <span class=s>&#34;0 */1 * ? * *&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>在这种模式下，可以设置Job的名称。这个名称可以在控制台中看见，字段是”编号“。<br><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622220004.png alt>
+目前用的最多的应该就这种模式了。</p><h3 id=continuejobwith-连续性任务>ContinueJobWith 连续性任务</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp>            <span class=kt>var</span> <span class=n>jobId</span> <span class=p>=</span> <span class=n>BackgroundJob</span><span class=p>.</span><span class=n>Enqueue</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>Thread</span><span class=p>.</span><span class=n>Sleep</span><span class=p>(</span><span class=m>1000</span><span class=p>));</span>
-            <span class=n>BackgroundJob</span><span class=p>.</span><span class=n>ContinueJobWith</span><span class=p>(</span><span class=n>jobId</span><span class=p>,</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>&#34;完成&#34;</span><span class=p>));</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>这种模式是通过获取上个任务的ID，当上个任务完成后执行任务。</p>
-<h2 id=任务的异常处理>任务的异常处理</h2>
-<p>任务异常处理可以通过在方法上增加修饰器来进行。</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl>            <span class=kt>var</span> <span class=n>jobId</span> <span class=p>=</span> <span class=n>BackgroundJob</span><span class=p>.</span><span class=n>Enqueue</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=n>Thread</span><span class=p>.</span><span class=n>Sleep</span><span class=p>(</span><span class=m>1000</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=n>BackgroundJob</span><span class=p>.</span><span class=n>ContinueJobWith</span><span class=p>(</span><span class=n>jobId</span><span class=p>,</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>&#34;完成&#34;</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><p>这种模式是通过获取上个任务的ID，当上个任务完成后执行任务。</p><h2 id=任务的异常处理>任务的异常处理</h2><p>任务异常处理可以通过在方法上增加修饰器来进行。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -322,148 +110,42 @@ Install-Package Hangfire.Console
 </span><span class=lnt>6
 </span><span class=lnt>7
 </span><span class=lnt>8
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp> <span class=k>public</span> <span class=k>class</span> <span class=nc>JobCenter</span>
-    <span class=p>{</span>
-<span class=na>        [AutomaticRetry(Attempts = 5)]</span>
-        <span class=k>public</span> <span class=k>static</span> <span class=k>void</span> <span class=n>JobA</span><span class=p>()</span>
-        <span class=p>{</span>
-            <span class=n>Debug</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=n>DateTime</span><span class=p>.</span><span class=n>Now</span><span class=p>);</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>其中的</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=na>[AutomaticRetry(Attempts = 5)]</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>就是当异常出现时，自动重试，当达到5次失败后抛出异常。<br>
-AutomaticRetry的重试次数预设为10次，如果不想重试可以直接设置为0。<br>
-如果想要全局设置这个重试次数，可以使用</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=n>GlobalJobFilters</span><span class=p>.</span><span class=n>Filters</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=k>new</span> <span class=n>AutomaticRetryAttribute</span> <span class=p>{</span> <span class=n>Attempts</span> <span class=p>=</span> <span class=m>5</span> <span class=p>});</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>AutomaticRetry中还有很多参数，例如这种</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=na> [AutomaticRetry(Attempts = 5 ,DelaysInSeconds = new[]</span> <span class=p>{</span> <span class=m>3</span><span class=p>,</span> <span class=m>10</span><span class=p>,</span> <span class=m>15</span> <span class=p>},</span> <span class=n>OnAttemptsExceeded</span> <span class=p>=</span> <span class=n>AttemptsExceededAction</span><span class=p>.</span><span class=n>Delete</span><span class=p>)]</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>DelaysInSeconds 指定了重试的时间间隔<br>
-OnAttemptsExceeded 当失败后的操作，是归类到删除还是失败</p>
-<p>同时在控制台中，也可很清晰的看见异常的信息<br>
-<img src=http://cdn.aliyun.fzyyxx.com/Img/20200622214014.png alt></p>
-<h2 id=queue设定>Queue设定</h2>
-<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622214857.png alt></p>
-<p>Queue的命名规则：小写字母，数字，下划线和破折号<br>
-当配置Queue名称后，UseHangfireServer 中也需要传入名称才能使用。</p>
-<p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622214927.png alt></p>
-<h2 id=其他>其他</h2>
-<h3 id=并发限制>并发限制</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=na>[DisableConcurrentExecution(秒数)]</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=任务名称>任务名称</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=na>[JobDisplayName(&#34;名字&#34;)]</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622220113.png alt></p>
-</div>
-<div class=post-copyright>
-<p class=copyright-item>
-<span class=item-title>文章作者</span>
-<span class=item-content>xJoker</span>
-</p>
-<p class=copyright-item>
-<span class=item-title>上次更新</span>
-<span class=item-content>
-2020-06-22
-</span>
-</p>
-</div>
-<footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/hangfire/>Hangfire</a>
-<a href=/tags/quartz/>Quartz</a>
-</div>
-<nav class=post-nav>
-<a class=prev href=/post/hangfire%E7%AE%80%E5%8D%95%E5%88%86%E5%B8%83%E5%BC%8F/>
-<i class="iconfont icon-left"></i>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl> <span class=k>public</span> <span class=k>class</span> <span class=nc>JobCenter</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=na>        [AutomaticRetry(Attempts = 5)]</span>
+</span></span><span class=line><span class=cl>        <span class=k>public</span> <span class=k>static</span> <span class=k>void</span> <span class=n>JobA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>Debug</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=n>DateTime</span><span class=p>.</span><span class=n>Now</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>其中的</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=na>[AutomaticRetry(Attempts = 5)]</span>
+</span></span></code></pre></td></tr></table></div></div><p>就是当异常出现时，自动重试，当达到5次失败后抛出异常。<br>AutomaticRetry的重试次数预设为10次，如果不想重试可以直接设置为0。<br>如果想要全局设置这个重试次数，可以使用</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=n>GlobalJobFilters</span><span class=p>.</span><span class=n>Filters</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=k>new</span> <span class=n>AutomaticRetryAttribute</span> <span class=p>{</span> <span class=n>Attempts</span> <span class=p>=</span> <span class=m>5</span> <span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>AutomaticRetry中还有很多参数，例如这种</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=na> [AutomaticRetry(Attempts = 5 ,DelaysInSeconds = new[]</span> <span class=p>{</span> <span class=m>3</span><span class=p>,</span> <span class=m>10</span><span class=p>,</span> <span class=m>15</span> <span class=p>},</span> <span class=n>OnAttemptsExceeded</span> <span class=p>=</span> <span class=n>AttemptsExceededAction</span><span class=p>.</span><span class=n>Delete</span><span class=p>)]</span>
+</span></span></code></pre></td></tr></table></div></div><p>DelaysInSeconds 指定了重试的时间间隔<br>OnAttemptsExceeded 当失败后的操作，是归类到删除还是失败</p><p>同时在控制台中，也可很清晰的看见异常的信息<br><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622214014.png alt></p><h2 id=queue设定>Queue设定</h2><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622214857.png alt></p><p>Queue的命名规则：小写字母，数字，下划线和破折号<br>当配置Queue名称后，UseHangfireServer 中也需要传入名称才能使用。</p><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622214927.png alt></p><h2 id=其他>其他</h2><h3 id=并发限制>并发限制</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=na>[DisableConcurrentExecution(秒数)]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=任务名称>任务名称</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=na>[JobDisplayName(&#34;名字&#34;)]</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=http://cdn.aliyun.fzyyxx.com/Img/20200622220113.png alt></p></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>xJoker</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2020-06-22</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/hangfire/>Hangfire</a>
+<a href=/tags/quartz/>Quartz</a></div><nav class=post-nav><a class=prev href=/post/hangfire%E7%AE%80%E5%8D%95%E5%88%86%E5%B8%83%E5%BC%8F/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Hangfire简单分布式</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/>
-<span class="next-text nav-default">Fork(Windows)逆向激活</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/forkwindows%E9%80%86%E5%90%91%E6%BF%80%E6%B4%BB/><span class="next-text nav-default">Fork(Windows)逆向激活</span>
 <span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav>
-</footer>
-</article>
-</div>
-<script src=https://utteranc.es/client.js repo=xjoker/xjoker.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script>
-<noscript>Please enable JavaScript to view the <a href=https://github.com/utterance>comments powered by utterances.</a></noscript>
-</div>
-</main>
-<footer id=footer class=footer>
-<div class=social-links>
-<a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
-<span class=power-by>
-由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
-</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><script src=https://utteranc.es/client.js repo=xjoker/xjoker.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><noscript>Please enable JavaScript to view the <a href=https://github.com/utterance>comments powered by utterances.</a></noscript></div></main><footer id=footer class=footer><div class=social-links><a href=https://xjoker.us/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>
-<span class=theme-info>
-主题 -
-<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
-</span>
-<div class=busuanzi-footer>
-<span id=busuanzi_container_site_pv> 本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次 </span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次</span>
 <span class=division>|</span>
-<span id=busuanzi_container_site_uv> 本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人 </span>
-</div>
-<span class=copyright-year>
-&copy;
+<span id=busuanzi_container_site_uv>本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人</span></div><span class=copyright-year>&copy;
 2019 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span>
-</span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>xJoker - 菜鸡码农小丑</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
-<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
-</body>
-</html>
+<script>var languageCode="en".replace(/-/g,"_").replace(/_(.*)/,function(e,t){return e.replace(t,t.toUpperCase())});timeago().render(document.querySelectorAll(".timeago"),languageCode),timeago.cancel()</script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script></body></html>
